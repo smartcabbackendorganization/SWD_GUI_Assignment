@@ -1,4 +1,4 @@
-﻿namespace SWD_GUI_Assignment.Model
+﻿namespace SWD_GUI_Assignment.Interfaces
 {
     interface IDebtor
     {

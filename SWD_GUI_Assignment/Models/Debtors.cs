@@ -6,16 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SWD_GUI_Assignment.Model
+namespace SWD_GUI_Assignment.Models
 {
-
-
-
-
-    class Debtors : ObservableCollection<Debtor>, INotifyPropertyChanged
+    class Debtors : ObservableCollection<Debtor>
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private double Balance { get; set; }
     }
 }
