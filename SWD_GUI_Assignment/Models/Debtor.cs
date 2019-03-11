@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using SWD_GUI_Assignment.Annotations;
@@ -8,9 +9,21 @@ namespace SWD_GUI_Assignment.Models
 {
     class Debtor : IDebtor, INotifyPropertyChanged
     {
-        private List<ITransaction> _transactions = new List<ITransaction>();
+        private ObservableCollection<ITransaction> _transactions = new ObservableCollection<ITransaction>();
+        private double _balance;
 
-        public double Balance { get; set; }
+        public double Balance
+        {
+            get => _balance;
+            set
+            {
+                if (_balance != value)
+                {
+                    _balance = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public void AddTransaction(ITransaction transaction)
         {

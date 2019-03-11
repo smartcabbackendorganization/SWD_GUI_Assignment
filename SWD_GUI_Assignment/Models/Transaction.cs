@@ -12,6 +12,9 @@ namespace SWD_GUI_Assignment.Models
 {
     class Transaction : ITransaction, INotifyPropertyChanged
     {
+        private DateTime _createdAt;
+        private double _amount;
+
         public Transaction(double amount)
         {
             CreatedAt = DateTime.Now;
@@ -19,9 +22,31 @@ namespace SWD_GUI_Assignment.Models
             Amount = amount;
         }
 
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt
+        {
+            get => _createdAt;
+            set
+            {
+                if (_createdAt != value)
+                {
+                    _createdAt = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
-        public double Amount { get; set; }
+        public double Amount
+        {
+            get => _amount;
+            set
+            {
+                if (_amount != value)
+                {
+                    _amount = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
