@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,10 @@ namespace SWD_GUI_Assignment.Model
 
 
 
-    class Debtors : ObservableCollection<Debtor>
+    class Debtors : ObservableCollection<Debtor>, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private double Balance { get; set; }
     }
 }

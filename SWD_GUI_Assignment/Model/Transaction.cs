@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SWD_GUI_Assignment.Model
 {
-    class Transaction : ITransaction
+    class Transaction : ITransaction, INotifyPropertyChanged
     {
         public Transaction(double amount)
         {
@@ -14,6 +15,8 @@ namespace SWD_GUI_Assignment.Model
 
             Amount = amount;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public DateTime CreatedAt { get; set; }
 
