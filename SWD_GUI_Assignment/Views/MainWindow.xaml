@@ -11,6 +11,15 @@
         <vm:MainViewModel></vm:MainViewModel>
     </Window.DataContext>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" x:Name="dgDebtors" ItemsSource="{Binding Path=Debtors}" SelectedItem="{Binding Path=CurrentDebtor}" AutoGenerateColumns="True" Margin="5" Grid.Row="0" Grid.Column="0" />
+
     </Grid>
 </Window>

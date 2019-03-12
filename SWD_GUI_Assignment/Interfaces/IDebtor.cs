@@ -1,7 +1,8 @@
 ﻿namespace SWD_GUI_Assignment.Interfaces
 {
-    interface IDebtor
+    public interface IDebtor
     {
+        string Name { get; set; }
         double Balance { get; set; }
         void AddTransaction(ITransaction transaction);
     }
