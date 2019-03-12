@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 
+// Code From: https://stackoverflow.com/questions/501886/how-should-the-viewmodel-close-the-form
+
 namespace SWD_GUI_Assignment.Services
 {
     public static class DialogCloser
