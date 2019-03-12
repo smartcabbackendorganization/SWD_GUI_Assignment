@@ -9,6 +9,10 @@
         Title="{Binding Path=WindowTitle}" Height="450" Width="800"
         se:DialogCloser.DialogResult="{Binding DialogResult}" ShowInTaskbar="False">
     <Grid>
-        
+       
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="178,136,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="200"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="178,192,0,0" TextWrapping="Wrap" Text="Initial Value" VerticalAlignment="Top" Width="200"/>
+        <Button IsDefault="True" Content="Ok" HorizontalAlignment="Left" Margin="178,316,0,0" VerticalAlignment="Top" Width="75" Command="SaveCommand"/>
+        <Button IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Margin="319,316,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>
