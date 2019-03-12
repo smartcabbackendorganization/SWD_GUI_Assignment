@@ -19,7 +19,7 @@ namespace SWD_GUI_Assignment.ViewModels
 
             WindowTitle = "The Debt Book";
             _debtors.Add(new Debtor());
-            _navigationService.Show(new AddDebtorViewModel(_navigationService));
+            
         }
     }
 }
