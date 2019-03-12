@@ -8,7 +8,7 @@ namespace SWD_GUI_Assignment.ViewModels
         {
             _navigationService = new NavigationService();
             WindowTitle = "Skyldnerlisten";
-            _navigationService.Show(new AddDebtorViewModel(_navigationService));
+           // _navigationService.Show(new AddDebtorViewModel(_navigationService));
             
         }
     }

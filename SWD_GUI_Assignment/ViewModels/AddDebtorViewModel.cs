@@ -9,19 +9,31 @@ namespace SWD_GUI_Assignment.ViewModels
 {
     public class AddDebtorViewModel : BaseViewModel
     {
-        public Debtor debtor;
+        private Debtor _debtor;
         public Debtor Debtor
         {
-            get { return debtor; }
-            set { SetProperty(ref debtor, value); }
+            get => _debtor; 
+            set  => SetProperty(ref _debtor, value); 
         }
-        
+
+        private double _amount;
+
+        public double Amount
+        {
+            get => _amount;
+            set => SetProperty(ref _amount, value);
+        }
+
 
         public AddDebtorViewModel(INavigationService navigationService)
         {
+            Debtor = new Debtor();
+            Debtor.Name = "Name";
+            Debtor.Balance = 0;
+
             _navigationService = navigationService;
 
-            WindowTitle = "Tilføj skyldner";
+            WindowTitle = "Add debtor";
         }
         
 
@@ -34,7 +46,7 @@ namespace SWD_GUI_Assignment.ViewModels
 
         private void SaveCommand_Execute()
         {
-            ITransaction transaction = new Transaction(InitialValue);
+            Debtor.AddTransaction(new Transaction(Amount));
             DialogResult = true;
         }
 
