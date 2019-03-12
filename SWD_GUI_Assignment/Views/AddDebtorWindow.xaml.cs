@@ -23,5 +23,10 @@ namespace SWD_GUI_Assignment.Views
         {
             InitializeComponent();
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
