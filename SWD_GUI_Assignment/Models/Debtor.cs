@@ -26,21 +26,6 @@ namespace SWD_GUI_Assignment.Models
             }
         }
 
-        private string _name;
-
-        public string Name
-        {
-            get => _name;
-            set
-            {
-                if (_name != value)
-                {
-                    _name = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
         public double Balance
         {
             get => _balance;
