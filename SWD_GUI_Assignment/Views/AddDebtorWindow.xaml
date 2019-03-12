@@ -6,13 +6,27 @@
         xmlns:local="clr-namespace:SWD_GUI_Assignment"
         xmlns:se="clr-namespace:SWD_GUI_Assignment.Services"
         mc:Ignorable="d"
-        Title="{Binding Path=WindowTitle}" Height="450" Width="800"
-        se:DialogCloser.DialogResult="{Binding DialogResult}" ShowInTaskbar="False">
-    <Grid>
-       
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="178,136,0,0" TextWrapping="Wrap" Name="Name" Text="{Binding Path=Debtor.Name}" VerticalAlignment="Top" Width="200"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="178,192,0,0" TextWrapping="Wrap" Name="Value" Text="{Binding Path=Amount}" VerticalAlignment="Top" Width="200"/>
-        <Button IsDefault="True" Content="Ok" HorizontalAlignment="Left" Margin="178,316,0,0" VerticalAlignment="Top" Width="75" Command="{Binding Path=SaveCommand}"/>
-        <Button IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Margin="319,316,0,0" VerticalAlignment="Top" Width="75"/>
+        Title="{Binding Path=WindowTitle}" Height="180" Width="300"
+        se:DialogCloser.DialogResult="{Binding DialogResult}" ShowInTaskbar="False" FocusManager.FocusedElement="{Binding ElementName=Name}">
+    <Grid Margin="5">
+       <Grid.RowDefinitions>
+           <RowDefinition Height="Auto"></RowDefinition>
+           <RowDefinition Height="Auto"></RowDefinition>
+           <RowDefinition Height="Auto"></RowDefinition>
+           <RowDefinition Height="Auto"></RowDefinition>
+           <RowDefinition Height="Auto"></RowDefinition>
+           <RowDefinition Height="*"></RowDefinition>
+       </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Content="Name" Grid.Row="0" Grid.Column="0"></Label>
+        <TextBox Name="Name" Text="{Binding Path=Debtor.Name}" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="0" Padding="3"></TextBox>
+        <Label Content="Amount" Grid.Row="2" Grid.Column="0"></Label>
+        <TextBox Name="Amount" Text="{Binding Path=Amount, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="0" Padding="3"></TextBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Margin="0 10 0 0">
+            <Button IsDefault="True" Content="OK" HorizontalAlignment="Left" MinWidth="75" Command="{Binding Path=SaveCommand}" Margin="0 0 30 0"/>
+            <Button IsCancel="True" Content="Cancel" HorizontalAlignment="Left" MinWidth="75"/>
+        </StackPanel>
     </Grid>
 </Window>

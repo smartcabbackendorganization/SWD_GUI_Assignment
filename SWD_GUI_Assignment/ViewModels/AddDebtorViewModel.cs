@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Windows;
+using System.Windows.Input;
 using Prism.Commands;
 using Prism.Common;
 using SWD_GUI_Assignment.Interfaces;
@@ -28,7 +29,7 @@ namespace SWD_GUI_Assignment.ViewModels
         public AddDebtorViewModel(INavigationService navigationService)
         {
             Debtor = new Debtor();
-            Debtor.Name = "Name";
+            Debtor.Name = "";
             Debtor.Balance = 0;
 
             _navigationService = navigationService;

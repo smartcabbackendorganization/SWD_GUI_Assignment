@@ -7,7 +7,17 @@ namespace SWD_GUI_Assignment.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        public MainViewModel()
+        {
+            _navigationService = new NavigationService();
+
+            WindowTitle = "The Debt Book";
+        }
+
+        #region Properties
+
         private Debtors _debtors = new Debtors();
+        private Debtor _currentDebtor;
 
         public Debtors Debtors
         {
@@ -15,16 +25,15 @@ namespace SWD_GUI_Assignment.ViewModels
             set => SetProperty(ref _debtors, value);
         }
 
-        public MainViewModel()
+        public Debtor Debtor
         {
-            _navigationService = new NavigationService();
-
-            WindowTitle = "The Debt Book";
-            var debtor = new Debtor();
-            debtor.AddTransaction(new Transaction(10));
-            _debtors.Add(debtor);
-
+            get => _currentDebtor;
+            set => SetProperty(ref _currentDebtor, value);
         }
+
+        #endregion
+
+        #region Commands
 
         private DelegateCommand _addDebtorCommand;
 
@@ -34,7 +43,9 @@ namespace SWD_GUI_Assignment.ViewModels
 
             if (_navigationService.Show(vm) == true)
             {
-                //Debtors.Add(vm.Debtor);
+                Debtors.Add(vm.Debtor);
+                // Force update of Debtors property, so Window will update total balance
+                RaisePropertyChanged(nameof(Debtors));
             }
         }));
 
@@ -43,12 +54,13 @@ namespace SWD_GUI_Assignment.ViewModels
         public DelegateCommand<Debtor> EditDebtorCommand => _editDebtorCommand ?? (_editDebtorCommand = new DelegateCommand<Debtor>((debtor) =>
         {
             var vm = new EditDebtorViewModel(_navigationService);
-            MessageBox.Show("CLICKED! Balance: " + debtor.Balance.ToString());
 
             if (_navigationService.Show(vm) == true)
             {
-                //Debtors.Add(vm.Debtor);
+                MessageBox.Show("Uddate the existing Debtor in Debtors with the newly edited one.");
             }
         }));
+
+        #endregion
     }
 }
