@@ -6,20 +6,31 @@
         xmlns:local="clr-namespace:SWD_GUI_Assignment"
         xmlns:vm="clr-namespace:SWD_GUI_Assignment.ViewModels"
         mc:Ignorable="d"
-        Title="{Binding Path=WindowTitle}" Height="450" Width="800">
+        Title="{Binding Path=WindowTitle}" Height="290" Width="600">
     <Window.DataContext>
         <vm:MainViewModel></vm:MainViewModel>
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" x:Name="dgDebtors" ItemsSource="{Binding Path=Debtors}" SelectedItem="{Binding Path=CurrentDebtor}" AutoGenerateColumns="True" Margin="5" Grid.Row="0" Grid.Column="0" />
+        <DataGrid CanUserAddRows="False" IsSynchronizedWithCurrentItem="True" MinHeight="200" CanUserDeleteRows="False" IsReadOnly="True" x:Name="dgDebtors" ItemsSource="{Binding Path=Debtors}" SelectedItem="{Binding Path=CurrentDebtor}" AutoGenerateColumns="True" Margin="5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <DataGrid.InputBindings>
+                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding EditDebtorCommand}" CommandParameter="{Binding Path=Debtors/}">
 
+                </MouseBinding>
+            </DataGrid.InputBindings>
+        </DataGrid>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Margin="5">
+            <Button Name="btnAddDebtor" Content="Add Debtor" Command="{Binding Path=AddDebtorCommand}" Margin="0 0 0 5" Padding="5 3"></Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="5" HorizontalAlignment="Right">
+            <TextBlock Text="Sum: " Margin="0 3 0 0"></TextBlock><TextBlock Text="{Binding Debtors.Balance}" Margin="0 3 5 0"></TextBlock>
+        </StackPanel>
     </Grid>
 </Window>

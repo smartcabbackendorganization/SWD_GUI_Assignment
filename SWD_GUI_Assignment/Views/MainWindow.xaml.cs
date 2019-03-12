@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SWD_GUI_Assignment.Models;
+using SWD_GUI_Assignment.ViewModels;
 
 namespace SWD_GUI_Assignment
 {
