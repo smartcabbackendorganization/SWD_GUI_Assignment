@@ -11,6 +11,7 @@ using SWD_GUI_Assignment.Interfaces;
 namespace SWD_GUI_Assignment.Models
 {
    public class Transaction : ITransaction, INotifyPropertyChanged
+
     {
         private DateTime _createdAt;
         private double _amount;
