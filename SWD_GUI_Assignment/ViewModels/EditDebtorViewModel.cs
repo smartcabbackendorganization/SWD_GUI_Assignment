@@ -1,4 +1,7 @@
-﻿using SWD_GUI_Assignment.Interfaces;
+﻿using System;
+using System.Windows.Input;
+using Prism.Commands;
+using SWD_GUI_Assignment.Interfaces;
 using SWD_GUI_Assignment.Models;
 
 namespace SWD_GUI_Assignment.ViewModels
@@ -9,19 +12,40 @@ namespace SWD_GUI_Assignment.ViewModels
 
         public Debtor ActiveDebtor
         {
-            get { return _activeDebtor; }
-            set { _activeDebtor = value; }
+            get => _activeDebtor;
+            set => SetProperty(ref _activeDebtor, value);
+        }
+
+        private double _newTransaction;
+
+        public double NewTransaction
+        {
+            get => _newTransaction;
+            set => SetProperty(ref _newTransaction, value);
         }
 
         public EditDebtorViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
 
-            ActiveDebtor=new Debtor();
-            ActiveDebtor.AddTransaction(new Transaction(10.5));
-            ActiveDebtor.AddTransaction(new Transaction(15.4));
-
             WindowTitle = "Rediger skyldner";
+
+        }
+
+        private ICommand _addValueCommand;
+
+        public ICommand AddValueCommand
+        {
+            get
+            {
+                return _addValueCommand ?? (_addValueCommand = new DelegateCommand(AddValue_Execute));
+            }
+        }
+
+        private void AddValue_Execute()
+        {
+            if (ActiveDebtor == null) throw new ArgumentNullException();
+            ActiveDebtor.Transactions.Add(new Transaction(NewTransaction));
         }
     }
 }
