@@ -30,7 +30,6 @@ namespace SWD_GUI_Assignment.ViewModels
         {
             Debtor = new Debtor();
             Debtor.Name = "";
-            Debtor.Balance = 0;
 
             _navigationService = navigationService;
 

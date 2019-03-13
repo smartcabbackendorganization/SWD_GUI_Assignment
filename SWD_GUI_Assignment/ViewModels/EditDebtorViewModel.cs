@@ -25,23 +25,18 @@ namespace SWD_GUI_Assignment.ViewModels
             set => SetProperty(ref _newTransaction, value);
         }
 
-        public EditDebtorViewModel(INavigationService navigationService)
+        public EditDebtorViewModel(INavigationService navigationService, Debtor debtor)
         {
             _navigationService = navigationService;
 
-            WindowTitle = "Rediger skyldner";
+            ActiveDebtor = debtor;
 
+            WindowTitle = "Edit Debtor - " + ActiveDebtor.Name;
         }
 
         private ICommand _addValueCommand;
 
-        public ICommand AddValueCommand
-        {
-            get
-            {
-                return _addValueCommand ?? (_addValueCommand = new DelegateCommand(AddValue_Execute));
-            }
-        }
+        public ICommand AddValueCommand => _addValueCommand ?? (_addValueCommand = new DelegateCommand(AddValue_Execute));
 
         private void AddValue_Execute()
         {
@@ -51,10 +46,7 @@ namespace SWD_GUI_Assignment.ViewModels
 
         private ICommand _confirmCommand;
 
-        public ICommand ConfirmCommand
-        {
-            get { return _confirmCommand ?? (_confirmCommand = new DelegateCommand(Confirm_Execute)); }
-        }
+        public ICommand ConfirmCommand => _confirmCommand ?? (_confirmCommand = new DelegateCommand(Confirm_Execute));
 
         private void Confirm_Execute()
         {

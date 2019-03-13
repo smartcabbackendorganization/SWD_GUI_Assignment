@@ -17,7 +17,7 @@ namespace SWD_GUI_Assignment.ViewModels
         #region Properties
 
         private Debtors _debtors = new Debtors();
-        private Debtor _currentDebtor;
+        private Debtor _debtor;
 
         public Debtors Debtors
         {
@@ -27,8 +27,8 @@ namespace SWD_GUI_Assignment.ViewModels
 
         public Debtor Debtor
         {
-            get => _currentDebtor;
-            set => SetProperty(ref _currentDebtor, value);
+            get => _debtor;
+            set => SetProperty(ref _debtor, value);
         }
 
         #endregion
@@ -53,13 +53,23 @@ namespace SWD_GUI_Assignment.ViewModels
 
         public DelegateCommand<Debtor> EditDebtorCommand => _editDebtorCommand ?? (_editDebtorCommand = new DelegateCommand<Debtor>((debtor) =>
         {
-            var vm = new EditDebtorViewModel(_navigationService);
             
-            vm.ActiveDebtor = debtor;
 
-            if (_navigationService.Show(vm) == true)
+            if (debtor != null)
             {
-                MessageBox.Show("Uddate the existing Debtor in Debtors with the newly edited one.");
+                // Work on a copy so editing wont interfere with this vm's instance
+                var vm = new EditDebtorViewModel(_navigationService, Debtor.Clone(debtor));
+
+                if (_navigationService.Show(vm) == true)
+                {
+                    var index = Debtors.IndexOf(Debtor);
+                    if (index != -1)
+                    {
+                        Debtors[index] = vm.ActiveDebtor;
+                        // Force update of Debtors property, so Window will update total balance
+                        RaisePropertyChanged(nameof(Debtors));
+                    }
+                }
             }
         }));
 
