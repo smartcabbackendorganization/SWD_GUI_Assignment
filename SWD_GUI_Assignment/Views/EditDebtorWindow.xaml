@@ -18,7 +18,7 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <ListView Grid.Row="0" MinWidth="400" MinHeight="300"/>
+            <ListView Grid.Row="0" MinWidth="400" MinHeight="300" ItemsSource="{Binding Path=ActiveDebtor.Transactions}" DisplayMemberPath="DateAndAmount" IsSynchronizedWithCurrentItem="True"/>
             <Button Grid.Row="1" Content="Close"/>
         </Grid>
         <Grid Grid.Column="1" Margin="10,10,10,10">

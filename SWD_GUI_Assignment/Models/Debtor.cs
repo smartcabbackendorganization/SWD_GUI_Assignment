@@ -7,9 +7,12 @@ using SWD_GUI_Assignment.Interfaces;
 
 namespace SWD_GUI_Assignment.Models
 {
-    class Debtor : IDebtor, INotifyPropertyChanged
+    public class Debtor : IDebtor, INotifyPropertyChanged
     {
         private ObservableCollection<ITransaction> _transactions = new ObservableCollection<ITransaction>();
+
+        public ObservableCollection<ITransaction> Transactions => _transactions;
+
         private double _balance;
 
         public double Balance

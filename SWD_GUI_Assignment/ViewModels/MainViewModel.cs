@@ -9,6 +9,9 @@ namespace SWD_GUI_Assignment.ViewModels
             _navigationService = new NavigationService();
 
             WindowTitle = "Skyldnerlisten";
+
+            //skal fjernes, kun for test
+            _navigationService.Show(new EditDebtorViewModel(_navigationService));
         }
     }
 }

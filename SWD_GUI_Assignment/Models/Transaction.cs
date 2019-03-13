@@ -10,7 +10,7 @@ using SWD_GUI_Assignment.Interfaces;
 
 namespace SWD_GUI_Assignment.Models
 {
-    class Transaction : ITransaction, INotifyPropertyChanged
+    public class Transaction : ITransaction, INotifyPropertyChanged
     {
         private DateTime _createdAt;
         private double _amount;
@@ -46,6 +46,11 @@ namespace SWD_GUI_Assignment.Models
                     OnPropertyChanged();
                 }
             }
+        }
+
+        public string DateAndAmount
+        {
+            get { return "Date: " + CreatedAt.ToString() + " Amount: " + Amount.ToString() + " DKK"; }
         }
 
         #region INotifyPropertyChanged
