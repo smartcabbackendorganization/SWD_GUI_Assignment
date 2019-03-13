@@ -25,6 +25,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -33,6 +34,7 @@
             <TextBox Name="AddValue" Grid.Column="0" Grid.Row="0" MinWidth="100" Text="{Binding Path = NewTransaction, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Grid.Column="1" Grid.Row="0" Content="DKK"></Label>
             <Button IsDefault="true" Grid.Column="0" Grid.Row="1" Content="Add transaction" Command="{Binding Path=AddValueCommand}"/>
+            <Button IsDefault="true" Grid.Column="0" Grid.Row="2" Content="Confirm" Margin="0,10,0,0" Command="{Binding Path=ConfirmCommand}"/>
         </Grid>
     </Grid>
 </Window>

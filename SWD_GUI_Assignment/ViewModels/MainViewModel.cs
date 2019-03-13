@@ -54,6 +54,8 @@ namespace SWD_GUI_Assignment.ViewModels
         public DelegateCommand<Debtor> EditDebtorCommand => _editDebtorCommand ?? (_editDebtorCommand = new DelegateCommand<Debtor>((debtor) =>
         {
             var vm = new EditDebtorViewModel(_navigationService);
+            
+            vm.ActiveDebtor = debtor;
 
             if (_navigationService.Show(vm) == true)
             {

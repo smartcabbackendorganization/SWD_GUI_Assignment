@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using Prism.Commands;
 using SWD_GUI_Assignment.Interfaces;
@@ -46,6 +47,18 @@ namespace SWD_GUI_Assignment.ViewModels
         {
             if (ActiveDebtor == null) throw new ArgumentNullException();
             ActiveDebtor.Transactions.Add(new Transaction(NewTransaction));
+        }
+
+        private ICommand _confirmCommand;
+
+        public ICommand ConfirmCommand
+        {
+            get { return _confirmCommand ?? (_confirmCommand = new DelegateCommand(Confirm_Execute)); }
+        }
+
+        private void Confirm_Execute()
+        {
+            DialogResult = true;
         }
     }
 }
