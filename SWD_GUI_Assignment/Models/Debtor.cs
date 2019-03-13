@@ -10,6 +10,9 @@ namespace SWD_GUI_Assignment.Models
     public class Debtor : IDebtor, INotifyPropertyChanged
     {
         private ObservableCollection<ITransaction> _transactions = new ObservableCollection<ITransaction>();
+
+        public ObservableCollection<ITransaction> Transactions => _transactions;
+
         private double _balance;
         private string _name;
 
