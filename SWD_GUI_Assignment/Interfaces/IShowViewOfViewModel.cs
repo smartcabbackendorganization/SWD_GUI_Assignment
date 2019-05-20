@@ -2,6 +2,8 @@
 {
     public interface IShowViewOfViewModel<T>
     {
-        bool? Show(T vm);
+        bool? ShowModal(T vm);
+
+        void ShowModeless(T vm);
     }
 }
