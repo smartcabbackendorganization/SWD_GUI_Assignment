@@ -43,6 +43,7 @@ namespace SWD_GUI_Assignment.ViewModels
             //Modeless way of doing it
             vm.Save += (arg1, arg2) =>
             {
+                vm.Debtor.AddTransaction(new Transaction(vm.Amount));
                 Debtors.Add(vm.Debtor);
                 RaisePropertyChanged(nameof(Debtors));
                 vm = null;
