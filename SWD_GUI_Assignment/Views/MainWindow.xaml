@@ -30,7 +30,8 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <ListView IsSynchronizedWithCurrentItem="True" MinHeight="200" x:Name="ListViewDebtors" ItemsSource="{Binding Path=Debtors}" SelectedItem="{Binding Path=Debtor}" Margin="5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+        <ListView IsSynchronizedWithCurrentItem="True" MinHeight="200" x:Name="ListViewDebtors" ItemsSource="{Binding Path=Debtors}"
+                  SelectedItem="{Binding Path=Debtor}" Margin="5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>

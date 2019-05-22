@@ -36,18 +36,31 @@ namespace SWD_GUI_Assignment.ViewModels
         #region Commands
 
         private DelegateCommand _addDebtorCommand;
-
+        private AddDebtorViewModel vm;
         public DelegateCommand AddDebtorCommand => _addDebtorCommand ?? (_addDebtorCommand = new DelegateCommand(() =>
         {
-            var vm = new AddDebtorViewModel(_navigationService);
-
-            if (_navigationService.Show(vm) == true)
+             vm = new AddDebtorViewModel(_navigationService);
+            //Modeless way of doing it
+            vm.Save += (arg1, arg2) =>
             {
+                vm.Debtor.AddTransaction(new Transaction(vm.Amount));
                 Debtors.Add(vm.Debtor);
-                // Force update of Debtors property, so Window will update total balance
                 RaisePropertyChanged(nameof(Debtors));
-            }
+                vm = null;
+            };
+            vm.Close += (arg1, arg2) =>
+            {
+                vm = null;
+            };
+
+
+            _navigationService.ShowModeless(vm);
+
+
+
         }));
+
+
 
         private DelegateCommand<Debtor> _editDebtorCommand;
 
@@ -60,7 +73,7 @@ namespace SWD_GUI_Assignment.ViewModels
                 // Work on a copy so editing wont interfere with this vm's instance
                 var vm = new EditDebtorViewModel(_navigationService, Debtor.Clone(debtor));
 
-                if (_navigationService.Show(vm) == true)
+                if (_navigationService.ShowModal(vm) == true)
                 {
                     var index = Debtors.IndexOf(Debtor);
                     if (index != -1)

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using Prism.Commands;
 using Prism.Common;
@@ -35,8 +36,9 @@ namespace SWD_GUI_Assignment.ViewModels
 
             WindowTitle = "Add debtor";
         }
-        
 
+        public event EventHandler Save;
+        public event EventHandler Close;
 
         ICommand _SaveCommand;
         public ICommand SaveCommand
@@ -46,8 +48,20 @@ namespace SWD_GUI_Assignment.ViewModels
 
         private void SaveCommand_Execute()
         {
-            Debtor.AddTransaction(new Transaction(Amount));
-            DialogResult = true;
+            Save?.Invoke(null,null);
+        }
+
+
+        ICommand _CloseCommand;
+        public ICommand CloseCommand
+        {
+            get { return _CloseCommand ?? (_SaveCommand = new DelegateCommand(CloseCommand_Execute)); }
+        }
+
+        private void CloseCommand_Execute()
+        {
+            Close?.Invoke(null, null);
+            
         }
 
     }

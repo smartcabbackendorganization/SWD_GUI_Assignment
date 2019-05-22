@@ -18,7 +18,9 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <DataGrid CanUserAddRows="False" IsSynchronizedWithCurrentItem="True" MinHeight="200" MinWidth="400" CanUserDeleteRows="False" IsReadOnly="True" x:Name="Debtor" ItemsSource="{Binding Path=ActiveDebtor.Transactions}" SelectedItem="{Binding Path=CurrentDebtor}" AutoGenerateColumns="True" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <DataGrid CanUserAddRows="False" IsSynchronizedWithCurrentItem="True" MinHeight="200" MinWidth="400" 
+                      CanUserDeleteRows="False" IsReadOnly="True" x:Name="Debtor" ItemsSource="{Binding Path=ActiveDebtor.Transactions}" 
+                      SelectedItem="{Binding Path=CurrentDebtor}" AutoGenerateColumns="True" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
             <Button IsCancel="true" Grid.Row="1" Content="Cancel" Padding="5 3" Margin="0 5 0 0"/>
         </Grid>
         <Grid Grid.Column="1" Margin="10">
