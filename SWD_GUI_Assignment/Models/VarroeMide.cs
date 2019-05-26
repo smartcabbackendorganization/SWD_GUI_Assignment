@@ -22,6 +22,12 @@ namespace SWD_GUI_Assignment.Models
             {
                 if (_name != value)
                 {
+                    if (value.Length > 18)
+                    {
+                        _name = value.Substring(0, 18);
+                        OnPropertyChanged();
+                        throw new ApplicationException("Lenght of name must be below 18 charactors");
+                    }
                     _name = value;
                     OnPropertyChanged();
                 }
