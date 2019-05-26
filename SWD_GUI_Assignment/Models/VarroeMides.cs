@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SWD_GUI_Assignment.Models
 {
-    public class Debtors : ObservableCollection<Debtor>
+    public class VarroeMides : ObservableCollection<VarroeMide>
     {
         public double Balance
         {

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using Prism.Commands;
 using SWD_GUI_Assignment.Models;
 using SWD_GUI_Assignment.Services;
@@ -11,24 +12,24 @@ namespace SWD_GUI_Assignment.ViewModels
         {
             _navigationService = new NavigationService();
 
-            WindowTitle = "The Debt Book";
+            WindowTitle = "Varroe Optællings System";
         }
 
         #region Properties
 
-        private Debtors _debtors = new Debtors();
-        private Debtor _debtor;
+        private VarroeMides _varroeMides = new VarroeMides();
+        private VarroeMide _varroeMide;
 
-        public Debtors Debtors
+        public VarroeMides VarroeMides
         {
-            get => _debtors;
-            set => SetProperty(ref _debtors, value);
+            get => _varroeMides;
+            set => SetProperty(ref _varroeMides, value);
         }
 
-        public Debtor Debtor
+        public VarroeMide VarroeMide
         {
-            get => _debtor;
-            set => SetProperty(ref _debtor, value);
+            get => _varroeMide;
+            set => SetProperty(ref _varroeMide, value);
         }
 
         #endregion
@@ -43,44 +44,40 @@ namespace SWD_GUI_Assignment.ViewModels
             //Modeless way of doing it
             vm.Save += (arg1, arg2) =>
             {
-                vm.Debtor.AddTransaction(new Transaction(vm.Amount));
-                Debtors.Add(vm.Debtor);
-                RaisePropertyChanged(nameof(Debtors));
+                Console.WriteLine(vm.VarroeMide.Name);
+               // vm.VarroeMide.AddTransaction(new Transaction(vm.Amount));
+                VarroeMides.Add(vm.VarroeMide);
+                RaisePropertyChanged(nameof(VarroeMides));
                 vm = null;
             };
             vm.Close += (arg1, arg2) =>
             {
                 vm = null;
             };
-
-
             _navigationService.ShowModeless(vm);
-
-
-
         }));
 
 
 
-        private DelegateCommand<Debtor> _editDebtorCommand;
+        private DelegateCommand<VarroeMide> _editDebtorCommand;
 
-        public DelegateCommand<Debtor> EditDebtorCommand => _editDebtorCommand ?? (_editDebtorCommand = new DelegateCommand<Debtor>((debtor) =>
+        public DelegateCommand<VarroeMide> EditDebtorCommand => _editDebtorCommand ?? (_editDebtorCommand = new DelegateCommand<VarroeMide>((debtor) =>
         {
             
 
             if (debtor != null)
             {
                 // Work on a copy so editing wont interfere with this vm's instance
-                var vm = new EditDebtorViewModel(_navigationService, Debtor.Clone(debtor));
+              //  var vm = new EditDebtorViewModel(_navigationService, VarroeMide.Clone(debtor));
 
                 if (_navigationService.ShowModal(vm) == true)
                 {
-                    var index = Debtors.IndexOf(Debtor);
+                    var index = VarroeMides.IndexOf(VarroeMide);
                     if (index != -1)
                     {
-                        Debtors[index] = vm.ActiveDebtor;
-                        // Force update of Debtors property, so Window will update total balance
-                        RaisePropertyChanged(nameof(Debtors));
+                        //VarroeMides[index] = vm.ActiveVarroeMide;
+                        // Force update of VarroeMides property, so Window will update total balance
+                        RaisePropertyChanged(nameof(VarroeMides));
                     }
                 }
             }

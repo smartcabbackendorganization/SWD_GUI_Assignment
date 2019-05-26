@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:SWD_GUI_Assignment"
         xmlns:vm="clr-namespace:SWD_GUI_Assignment.ViewModels"
         mc:Ignorable="d"
-        Title="{Binding Path=WindowTitle}" Height="290" Width="600" WindowStartupLocation="CenterScreen">
+        Title="{Binding Path=WindowTitle}" Icon="/Images/Capture.PNG" Height="290" Width="600" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:MainViewModel></vm:MainViewModel>
     </Window.DataContext>
@@ -22,27 +22,34 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="27*"></ColumnDefinition>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="148*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <ListView IsSynchronizedWithCurrentItem="True" MinHeight="200" x:Name="ListViewDebtors" ItemsSource="{Binding Path=Debtors}"
-                  SelectedItem="{Binding Path=Debtor}" Margin="5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+        <ListView IsSynchronizedWithCurrentItem="True" MinHeight="200" x:Name="ListViewDebtors" ItemsSource="{Binding Path=VarroeMides}"
+                  SelectedItem="{Binding Path=VarroeMide}" Margin="5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">
                             <GridViewColumnHeader Content="Name" HorizontalContentAlignment="Left" MinWidth="200"></GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn CellTemplate="{StaticResource BalanceCellTemplate}">
-                            <GridViewColumnHeader Content="Balance" HorizontalContentAlignment="Right" MinWidth="100"></GridViewColumnHeader>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=VarroMides}">
+                            <GridViewColumnHeader Content="VarroMides" HorizontalContentAlignment="Right" MinWidth="100"></GridViewColumnHeader>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=CreatedAt}">
+                            <GridViewColumnHeader Content="CreatedAt" HorizontalContentAlignment="Right" MinWidth="100"></GridViewColumnHeader>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Comment}">
+                            <GridViewColumnHeader Content="Comment" HorizontalContentAlignment="Right" MinWidth="100"></GridViewColumnHeader>
                         </GridViewColumn>
                     </GridView.Columns>
-                    
+
                 </GridView>
             </ListView.View>
 
@@ -53,11 +60,12 @@
             </i:Interaction.Triggers>
 
         </ListView>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Margin="5">
-            <Button Name="btnAddDebtor" Content="Add Debtor" Command="{Binding Path=AddDebtorCommand}" Margin="0 0 0 5" Padding="5 3"></Button>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Margin="5" Grid.ColumnSpan="2">
+            <Button Name="btnAddDebtor" Content="Add VarroeMide" Command="{Binding Path=AddDebtorCommand}" Margin="0 0 0 5" Padding="5 3"></Button>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="5" HorizontalAlignment="Right">
-            <TextBlock Text="Sum: " Margin="0 3 0 0"></TextBlock><TextBlock Text="{Binding Debtors.Balance, StringFormat=F2}" Margin="0 3 5 0"></TextBlock>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2" Margin="0,5,5,5" HorizontalAlignment="Right">
+            <TextBlock Text="Sum: " Margin="0 3 0 0"></TextBlock>
+            <TextBlock Text="{Binding VarroeMides.Balance, StringFormat=F2}" Margin="0 3 5 0"></TextBlock>
         </StackPanel>
     </Grid>
 </Window>

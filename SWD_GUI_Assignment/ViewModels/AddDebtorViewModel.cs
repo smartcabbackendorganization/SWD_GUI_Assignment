@@ -11,11 +11,11 @@ namespace SWD_GUI_Assignment.ViewModels
 {
     public class AddDebtorViewModel : BaseViewModel
     {
-        private Debtor _debtor;
-        public Debtor Debtor
+        private VarroeMide _varroeMide;
+        public VarroeMide VarroeMide
         {
-            get => _debtor; 
-            set  => SetProperty(ref _debtor, value); 
+            get => _varroeMide; 
+            set  => SetProperty(ref _varroeMide, value); 
         }
 
         private double _amount;
@@ -29,12 +29,18 @@ namespace SWD_GUI_Assignment.ViewModels
 
         public AddDebtorViewModel(INavigationService navigationService)
         {
-            Debtor = new Debtor();
-            Debtor.Name = "";
+            VarroeMide = new VarroeMide();
+            VarroeMide.Name = "";
+
+            VarroeMide.CreatedAt = DateTime.Now;
+
+            VarroeMide.VarroMides = 0;
+
+            VarroeMide.Comment = "";
 
             _navigationService = navigationService;
 
-            WindowTitle = "Add debtor";
+            WindowTitle = "Add varroeMide";
         }
 
         public event EventHandler Save;

@@ -9,12 +9,12 @@ namespace SWD_GUI_Assignment.ViewModels
 {
     public class EditDebtorViewModel : BaseViewModel
     {
-        private Debtor _activeDebtor;
+        private VarroeMide _activeVarroeMide;
 
-        public Debtor ActiveDebtor
+        public VarroeMide ActiveVarroeMide
         {
-            get => _activeDebtor;
-            set => SetProperty(ref _activeDebtor, value);
+            get => _activeVarroeMide;
+            set => SetProperty(ref _activeVarroeMide, value);
         }
 
         private double _newTransaction;
@@ -25,13 +25,13 @@ namespace SWD_GUI_Assignment.ViewModels
             set => SetProperty(ref _newTransaction, value);
         }
 
-        public EditDebtorViewModel(INavigationService navigationService, Debtor debtor)
+        public EditDebtorViewModel(INavigationService navigationService, VarroeMide varroeMide)
         {
             _navigationService = navigationService;
 
-            ActiveDebtor = debtor;
+            ActiveVarroeMide = varroeMide;
 
-            WindowTitle = "Edit Debtor - " + ActiveDebtor.Name;
+            WindowTitle = "Edit VarroeMide - " + ActiveVarroeMide.Name;
         }
 
         private ICommand _addValueCommand;
@@ -40,8 +40,8 @@ namespace SWD_GUI_Assignment.ViewModels
 
         private void AddValue_Execute()
         {
-            if (ActiveDebtor == null) throw new ArgumentNullException();
-            ActiveDebtor.Transactions.Add(new Transaction(NewTransaction));
+            if (ActiveVarroeMide == null) throw new ArgumentNullException();
+            //ActiveVarroeMide.Transactions.Add(new Transaction(NewTransaction));
         }
 
         private ICommand _confirmCommand;

@@ -104,11 +104,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Debtor.cs" />
-    <Compile Include="Models\Debtors.cs" />
-    <Compile Include="Interfaces\IDebtor.cs" />
-    <Compile Include="Interfaces\ITransaction.cs" />
-    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\VarroeMide.cs" />
+    <Compile Include="Models\VarroeMides.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -136,6 +133,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Capture.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
