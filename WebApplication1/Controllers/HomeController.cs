@@ -28,7 +28,13 @@ namespace WebApplication1.Controllers
         {
             var vm = new VaroViewModels()
             {
-                mides = Context.Varroemides.ToList()
+                mides = new List<Varomides>()
+                {
+                    new Varomides()
+                    {
+                        Comments = "hej"
+                    }
+                }
             };
 
             return View(vm);

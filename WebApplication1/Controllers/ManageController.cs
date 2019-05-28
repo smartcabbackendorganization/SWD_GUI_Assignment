@@ -8,6 +8,7 @@ using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Newtonsoft.Json;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -89,6 +90,23 @@ namespace WebApplication1.Controllers
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
             return View(model);
+        }
+
+
+        // GET: /Manage/Index
+        [AllowAnonymous]
+        public async Task<String> GetAllVarroemides()
+        {
+            List<Varomides> mides = new List<Varomides>()
+            {
+                new Varomides()
+                {
+                    Comments = "hej"
+                }
+            };
+
+            
+            return JsonConvert.SerializeObject(mides); ;
         }
 
         [HttpPost]
