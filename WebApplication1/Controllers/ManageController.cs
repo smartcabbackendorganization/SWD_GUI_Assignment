@@ -97,40 +97,10 @@ namespace WebApplication1.Controllers
         [AllowAnonymous]
         public async Task<String> GetAllVarroemides()
         {
-            List<Varomides> mides = new List<Varomides>()
-            {
-                new Varomides()
-                {
-                    Comments = "hej"
-                }
-            };
-
-            
-            return JsonConvert.SerializeObject(mides); ;
+            return JsonConvert.SerializeObject(Context.Varroemides.ToList()); ;
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register(VaromidesViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var Measurement = new Varomides()
-                {
-                    Navn =model.Navn,
-                    Comments = model.Comments,
-                    Count = model.Count,
-                    DaysObserved = model.DaysObserved
-                };
-                //Save changes
-                var result = Context.Varroemides.Add(Measurement);
-                Context.SaveChanges();
-                return RedirectToAction("Index", "Home");
-            }
 
-            // If we got this far, something failed, redisplay form
-            return RedirectToAction("Index", "Home");
-        }
 
         protected override void Dispose(bool disposing)
         {

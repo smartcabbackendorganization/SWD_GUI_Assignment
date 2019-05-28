@@ -1,41 +1,60 @@
 ﻿@using WebApplication1.Models
-@model WebApplication1.Models.VaroViewModels
+@using Microsoft.AspNet.Identity
+@model WebApplication1.Models.RegistrerVarroeViewModel
 @{
     ViewBag.Title = "Home Page";
 }
 <div class="row">
     <div class="col-md-4">
-
+        
+    @if (Request.IsAuthenticated)
+    {
         <div id="vueApp">
-            <div v-for="varroe in varroes">
-                <div class="details">
-                    <p>{{varroe.Count}} | {{varroe.DaysObserved}} | {{varroe.Navn}} | {{varroe.Comment}} | {{varroe.CreatedAt}} hej</p>
+            <div>
+                <b-table :filter="/Mads/" striped hover :items="varroes"></b-table>
+            </div>
+            @User.Identity.GetUserName()
+        </div>
+    }
+
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h4>Make a new Entry.</h4>
+            <hr />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Navn, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Navn, new { @class = "form-control" })
                 </div>
             </div>
-         </div>
-
-
-            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>Make a new Entry.</h4>
-                <hr />
-                @Html.ValidationSummary("", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Navn, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Navn, new { @class = "form-control" })
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Count, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Count, new { @class = "form-control" })
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" class="btn btn-default" value="Register" />
-                    </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.DaysObserved, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.DaysObserved, new { @class = "form-control" })
                 </div>
-            }
-        </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Comments, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Comments, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Register" />
+                </div>
+            </div>
+        }
     </div>
+</div>
 @section Scripts {
-    <script src="~/js/music-vue.js" asp-append-version="true"></script>
     <script src="~/js/index2.js"></script>
 }

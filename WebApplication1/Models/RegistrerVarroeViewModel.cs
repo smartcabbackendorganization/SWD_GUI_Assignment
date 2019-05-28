@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1.Models
 {
-    public class VaromidesViewModel
+    public class RegistrerVarroeViewModel
     {
         [Required]
         [StringLength(18, ErrorMessage = "Maximum length is 18")]
