@@ -7,6 +7,9 @@ vm = new Vue({
     methods: {
     },
     mounted() {
+        console.log("Hej")
+        console.log(model.Navn);
+
         // Get all upcomming music arrangements
         fetch('/data/GetVarroe').then(function (response) {
             if (response.status !== 200) {
