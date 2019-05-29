@@ -45,7 +45,8 @@ namespace WebApplication1.Controllers
                     Comments = model.Comments,
                     Count = model.Count,
                     DaysObserved = model.DaysObserved,
-                    Navn = model.Navn
+                    Navn = model.Navn,
+                    CreatedBy = User.Identity.Name
                 };
 
                 Context.Varroemides.Add(varroe);

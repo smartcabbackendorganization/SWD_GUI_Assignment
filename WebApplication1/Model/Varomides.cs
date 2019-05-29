@@ -10,6 +10,8 @@ namespace WebApplication1.Models
         }
         public int Id { get; set; }
 
+        public string CreatedBy { get; set; }
+
         public string Navn { get; set; }
         public DateTime CreatedAt { get; set; }
         public int Count { get; set; }

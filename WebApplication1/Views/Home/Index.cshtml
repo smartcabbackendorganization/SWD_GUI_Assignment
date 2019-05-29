@@ -11,9 +11,10 @@
     {
         <div id="vueApp">
             <div>
-                <b-table :filter="/Mads/" striped hover :items="varroes"></b-table>
+                <b-table :filter="/@User.Identity.GetUserName()/" striped hover :fields="['Navn','CreatedAt','Count','DaysObserved','Comment']" :items="varroes"></b-table>
             </div>
-            @User.Identity.GetUserName()
+            
+            
         </div>
     }
 
