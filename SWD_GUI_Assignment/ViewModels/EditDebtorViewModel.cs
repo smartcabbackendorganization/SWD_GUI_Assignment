@@ -2,8 +2,8 @@
 using System.Windows;
 using System.Windows.Input;
 using Prism.Commands;
-using SWD_GUI_Assignment.Interfaces;
 using SWD_GUI_Assignment.Models;
+using SWD_GUI_Assignment.Services;
 
 namespace SWD_GUI_Assignment.ViewModels
 {
@@ -25,7 +25,7 @@ namespace SWD_GUI_Assignment.ViewModels
             set => SetProperty(ref _newTransaction, value);
         }
 
-        public EditDebtorViewModel(INavigationService navigationService, VarroeMide varroeMide)
+        public EditDebtorViewModel(NavigationService navigationService, VarroeMide varroeMide)
         {
             _navigationService = navigationService;
 

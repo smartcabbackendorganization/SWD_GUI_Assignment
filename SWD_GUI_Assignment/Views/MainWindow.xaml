@@ -76,23 +76,20 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Navn}">
-                            <GridViewColumnHeader Content="Navn" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Kunde}">
+                            <GridViewColumnHeader Content="Kunde" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Adresse}">
                             <GridViewColumnHeader Content="Adresse" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Højde}">
-                            <GridViewColumnHeader Content="Højde" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=StartDato}">
+                            <GridViewColumnHeader Content="StartDato" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Hårfarve}">
-                            <GridViewColumnHeader Content="Hårfarve" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=AntalDage}">
+                            <GridViewColumnHeader Content="AntalDage" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Vægt}">
-                            <GridViewColumnHeader Content="Vægt" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
-                        </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=TelefonNr}">
-                            <GridViewColumnHeader Content="TelefonNr" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=AntalModeller}">
+                            <GridViewColumnHeader Content="AntalModeller" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Kommentarer}">
                             <GridViewColumnHeader Content="Kommentarer" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>

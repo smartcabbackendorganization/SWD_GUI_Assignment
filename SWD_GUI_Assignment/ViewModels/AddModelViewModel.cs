@@ -5,8 +5,8 @@ using System.Windows.Input;
 using Microsoft.Win32;
 using Prism.Commands;
 using Prism.Common;
-using SWD_GUI_Assignment.Interfaces;
 using SWD_GUI_Assignment.Models;
+using SWD_GUI_Assignment.Services;
 
 
 namespace SWD_GUI_Assignment.ViewModels
@@ -20,7 +20,7 @@ namespace SWD_GUI_Assignment.ViewModels
             set  => SetProperty(ref _model, value); 
         }
 
-        public AddModelViewModel(INavigationService navigationService)
+        public AddModelViewModel(NavigationService navigationService)
         {
             Model = new Model();
 

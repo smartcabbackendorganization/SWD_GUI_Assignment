@@ -5,32 +5,24 @@ using System.Windows.Input;
 using Microsoft.Win32;
 using Prism.Commands;
 using Prism.Common;
-using SWD_GUI_Assignment.Interfaces;
 using SWD_GUI_Assignment.Models;
+using SWD_GUI_Assignment.Services;
 
 
 namespace SWD_GUI_Assignment.ViewModels
 {
     public class AddJobViewModel : BaseViewModel
     {
-        private Model _model;
-        public Model Model
+        private Job _job;
+        public Job Job
         {
-            get => _model; 
-            set  => SetProperty(ref _model, value); 
+            get => _job; 
+            set  => SetProperty(ref _job, value); 
         }
 
-        public AddJobViewModel(INavigationService navigationService)
+        public AddJobViewModel(NavigationService navigationService)
         {
-            Model = new Model();
-
-            Model.Hårfarve = "Brunt";
-            Model.Navn = "";
-            Model.Kommentarer = "Ingen kommentar";
-            Model.Vægt = "50 kg";
-            Model.Højde = 170;
-
-
+            Job = new Job();
             _navigationService = navigationService;
 
             WindowTitle = "Add Model";

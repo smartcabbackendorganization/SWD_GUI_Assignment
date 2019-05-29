@@ -1,12 +1,12 @@
 ﻿using System.Windows.Navigation;
 using Prism.Mvvm;
-using SWD_GUI_Assignment.Interfaces;
+using NavigationService = SWD_GUI_Assignment.Services.NavigationService;
 
 namespace SWD_GUI_Assignment.ViewModels
 {
     public abstract class BaseViewModel : BindableBase
     {
-        protected INavigationService _navigationService;
+        protected NavigationService _navigationService;
 
         protected string _windowTitle;
         public string WindowTitle

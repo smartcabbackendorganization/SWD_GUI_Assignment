@@ -119,13 +119,13 @@ namespace SWD_GUI_Assignment.ViewModels
 
 
         private DelegateCommand _addJobCommand;
-        private AddModelViewModel vmJob;
+        private AddJobViewModel vmJob;
         public DelegateCommand AddJobCommand => _addJobCommand ?? (_addJobCommand = new DelegateCommand(() =>
         {
-            vmJob = new AddModelViewModel(_navigationService);
-            if (_navigationService.ShowModal(vm) == true)
+            vmJob = new AddJobViewModel(_navigationService);
+            if (_navigationService.ShowModal(vmJob) == true)
             {
-                _jobs.Add(new Job());
+                _jobs.Add(vmJob.Job);
             };
         }));
 

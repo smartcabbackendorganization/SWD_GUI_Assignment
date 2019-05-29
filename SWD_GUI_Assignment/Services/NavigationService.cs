@@ -4,7 +4,7 @@ using SWD_GUI_Assignment.Views;
 
 namespace SWD_GUI_Assignment.Services
 {
-    public class NavigationService : INavigationService
+    public class NavigationService : IShowViewOfViewModel<AddModelViewModel>, IShowViewOfViewModel<EditDebtorViewModel>
     {
         public bool? ShowModal(AddModelViewModel vm)
         {
