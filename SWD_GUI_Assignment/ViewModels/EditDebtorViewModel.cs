@@ -44,13 +44,6 @@ namespace SWD_GUI_Assignment.ViewModels
             //ActiveVarroeMide.Transactions.Add(new Transaction(NewTransaction));
         }
 
-        private ICommand _confirmCommand;
 
-        public ICommand ConfirmCommand => _confirmCommand ?? (_confirmCommand = new DelegateCommand(Confirm_Execute));
-
-        private void Confirm_Execute()
-        {
-            DialogResult = true;
-        }
     }
 }

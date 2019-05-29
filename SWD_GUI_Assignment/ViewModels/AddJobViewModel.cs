@@ -11,38 +11,29 @@ using SWD_GUI_Assignment.Models;
 
 namespace SWD_GUI_Assignment.ViewModels
 {
-    public class AddDebtorViewModel : BaseViewModel
+    public class AddJobViewModel : BaseViewModel
     {
-        private VarroeMide _varroeMide;
-        public VarroeMide VarroeMide
+        private Model _model;
+        public Model Model
         {
-            get => _varroeMide; 
-            set  => SetProperty(ref _varroeMide, value); 
+            get => _model; 
+            set  => SetProperty(ref _model, value); 
         }
 
-        private double _amount;
-
-        public double Amount
+        public AddJobViewModel(INavigationService navigationService)
         {
-            get => _amount;
-            set => SetProperty(ref _amount, value);
-        }
+            Model = new Model();
 
+            Model.Hårfarve = "Brunt";
+            Model.Navn = "";
+            Model.Kommentarer = "Ingen kommentar";
+            Model.Vægt = "50 kg";
+            Model.Højde = 170;
 
-        public AddDebtorViewModel(INavigationService navigationService)
-        {
-            VarroeMide = new VarroeMide();
-            VarroeMide.Name = "";
-
-            VarroeMide.CreatedAt = DateTime.Now;
-
-            VarroeMide.VarroMides = 0;
-
-            VarroeMide.Comment = "";
 
             _navigationService = navigationService;
 
-            WindowTitle = "Add varroeMide";
+            WindowTitle = "Add Model";
         }
 
         public event EventHandler Save;
@@ -72,6 +63,13 @@ namespace SWD_GUI_Assignment.ViewModels
             
         }
 
+        private ICommand _confirmCommand;
 
+        public ICommand ConfirmCommand => _confirmCommand ?? (_confirmCommand = new DelegateCommand(Confirm_Execute));
+
+        private void Confirm_Execute()
+        {
+            DialogResult = true;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
@@ -19,19 +20,34 @@ namespace SWD_GUI_Assignment.ViewModels
         {
             _navigationService = new NavigationService();
 
-            WindowTitle = "Varroe Optællings System";
+            WindowTitle = "Model SW";
 
 
             usersCollection = new CollectionViewSource();
-            usersCollection.Source = _varroeMides;
-            usersCollection.Filter += usersCollection_Filter;
+            usersCollection.Source = _models;
+            //usersCollection.Filter += usersCollection_Filter;
             FilterText = "";
 
         }
 
         #region Properties
 
-        private VarroeMides _varroeMides = new VarroeMides();
+        private ObservableCollection<Model> _models = new ObservableCollection<Model>();
+
+        public ObservableCollection<Model> Models
+        {
+            get => _models;
+            set => SetProperty(ref _models, value);
+        }
+
+
+        private ObservableCollection<Job> _jobs = new ObservableCollection<Job>();
+
+        public ObservableCollection<Job> Jobs
+        {
+            get => _jobs;
+            set => SetProperty(ref _jobs, value);
+        }
 
         private CollectionViewSource usersCollection;
 
@@ -41,13 +57,6 @@ namespace SWD_GUI_Assignment.ViewModels
             {
                 return this.usersCollection.View;
             }
-        }
-
-
-        public VarroeMides VarroeMides
-        {
-            get => _varroeMides;
-            set => SetProperty(ref _varroeMides, value);
         }
 
         public string FilterText
@@ -80,6 +89,7 @@ namespace SWD_GUI_Assignment.ViewModels
             else
             {
                 e.Accepted = false;
+                e.Accepted = true;
             }
         }
 
@@ -89,17 +99,15 @@ namespace SWD_GUI_Assignment.ViewModels
         #region Commands
 
         private DelegateCommand _addDebtorCommand;
-        private AddDebtorViewModel vm;
+        private AddModelViewModel vm;
         public DelegateCommand AddDebtorCommand => _addDebtorCommand ?? (_addDebtorCommand = new DelegateCommand(() =>
         {
-             vm = new AddDebtorViewModel(_navigationService);
+             vm = new AddModelViewModel(_navigationService);
             //Modeless way of doing it
             vm.Save += (arg1, arg2) =>
             {
-                Console.WriteLine(vm.VarroeMide.Name);
-               // vm.VarroeMide.AddTransaction(new Transaction(vm.Amount));
-                VarroeMides.Add(vm.VarroeMide);
-                RaisePropertyChanged(nameof(VarroeMides));
+                _models.Add(vm.Model);
+                RaisePropertyChanged(nameof(Models));
                 vm = null;
             };
             vm.Close += (arg1, arg2) =>
@@ -107,6 +115,18 @@ namespace SWD_GUI_Assignment.ViewModels
                 vm = null;
             };
             _navigationService.ShowModeless(vm);
+        }));
+
+
+        private DelegateCommand _addJobCommand;
+        private AddModelViewModel vmJob;
+        public DelegateCommand AddJobCommand => _addJobCommand ?? (_addJobCommand = new DelegateCommand(() =>
+        {
+            vmJob = new AddModelViewModel(_navigationService);
+            if (_navigationService.ShowModal(vm) == true)
+            {
+                _jobs.Add(new Job());
+            };
         }));
 
 
@@ -144,9 +164,9 @@ namespace SWD_GUI_Assignment.ViewModels
 
         private void SaveFile_Execute()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(VarroeMides));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Model>));
             StringWriter textWriter = new StringWriter();
-            serializer.Serialize(textWriter,_varroeMides);
+            serializer.Serialize(textWriter,_models);
 
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();

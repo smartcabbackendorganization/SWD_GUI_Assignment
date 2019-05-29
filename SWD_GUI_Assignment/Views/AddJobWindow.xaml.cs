@@ -17,9 +17,9 @@ namespace SWD_GUI_Assignment.Views
     /// <summary>
     /// Interaction logic for AddDebtorWindow.xaml
     /// </summary>
-    public partial class AddDebtorWindow : Window
+    public partial class AddJobWindow : Window
     {
-        public AddDebtorWindow()
+        public AddJobWindow()
         {
             InitializeComponent();
         }
