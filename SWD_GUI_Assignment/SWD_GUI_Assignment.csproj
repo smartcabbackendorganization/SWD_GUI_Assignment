@@ -84,7 +84,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Lokation.cs" />
     <Compile Include="Models\MeasurementTree.cs" />
     <Compile Include="Services\DialogCloser.cs" />
@@ -105,8 +104,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\VarroeMide.cs" />
-    <Compile Include="Models\VarroeMides.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
