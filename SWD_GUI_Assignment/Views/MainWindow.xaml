@@ -31,16 +31,16 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <ListView IsSynchronizedWithCurrentItem="True" MinHeight="200" x:Name="ListViewDebtors" ItemsSource="{Binding Path=SourceCollection}"
-                  SelectedItem="{Binding Path=Models}" Margin="5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+        <ListView IsSynchronizedWithCurrentItem="True" MinHeight="200" x:Name="ListViewDebtors" ItemsSource="{Binding Path=LokationCollection}"
+                  SelectedItem="{Binding Path=Lokations}" Margin="5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Navn}">
                             <GridViewColumnHeader Content="Navn" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Adresse}">
-                            <GridViewColumnHeader Content="Adresse" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Vej}">
+                            <GridViewColumnHeader Content="Vej" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Vejnummer}">
                             <GridViewColumnHeader Content="Vejnummer" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
@@ -51,8 +51,8 @@
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Postnummer}">
                             <GridViewColumnHeader Content="Postnummer" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Vej}">
-                            <GridViewColumnHeader Content="Vej" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=SamletAntal}">
+                            <GridViewColumnHeader Content="Samlet Antal" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
                     </GridView.Columns>
 

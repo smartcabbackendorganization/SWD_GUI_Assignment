@@ -11,7 +11,7 @@ using SWD_GUI_Assignment.Services;
 
 namespace SWD_GUI_Assignment.ViewModels
 {
-    public class AddModelViewModel : BaseViewModel
+    public class AddLokationViewModel : BaseViewModel
     {
         private Lokation _lokation;
         public Lokation Lokation
@@ -20,7 +20,7 @@ namespace SWD_GUI_Assignment.ViewModels
             set  => SetProperty(ref _lokation, value); 
         }
 
-        public AddModelViewModel(NavigationService navigationService)
+        public AddLokationViewModel(NavigationService navigationService)
         {
             Lokation = new Lokation();
 

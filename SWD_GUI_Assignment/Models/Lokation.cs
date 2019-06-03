@@ -12,7 +12,6 @@ namespace SWD_GUI_Assignment.Models
 
         public string Navn{ get; set; }
         public string Vej { get; set; }
-        public string Adresse { get; set; }
 
         public int Vejnummer { get; set; }
 
@@ -21,5 +20,10 @@ namespace SWD_GUI_Assignment.Models
         public string By { get; set; }
 
         public List<MeasurementTree> MeasurementTrees { get; set; }
+
+        public int SamletAntal
+        {
+            get => MeasurementTrees.Sum(x => x.Antal);
+        } 
     }
 }

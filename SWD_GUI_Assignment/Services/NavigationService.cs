@@ -4,18 +4,18 @@ using SWD_GUI_Assignment.Views;
 
 namespace SWD_GUI_Assignment.Services
 {
-    public class NavigationService : IShowViewOfViewModel<AddModelViewModel>, IShowViewOfViewModel<EditDebtorViewModel>
+    public class NavigationService : IShowViewOfViewModel<AddLokationViewModel>, IShowViewOfViewModel<EditDebtorViewModel>
     {
-        public bool? ShowModal(AddModelViewModel vm)
+        public bool? ShowModal(AddLokationViewModel vm)
         {
-            var window = new AddModelWindow();
+            var window = new AddLokationWindow();
             window.DataContext = vm;
             return window.ShowDialog();
         }
 
-        public void ShowModeless(AddModelViewModel vm)
+        public void ShowModeless(AddLokationViewModel vm)
         {
-            var window = new AddModelWindow();
+            var window = new AddLokationWindow();
             window.DataContext = vm;
             window.Show();
             vm.Close += (arg1,arg2) => {window.Close(); };

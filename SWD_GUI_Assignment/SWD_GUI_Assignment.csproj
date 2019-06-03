@@ -72,7 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AddModelWindow.xaml">
+    <Page Include="Views\AddLokationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -96,14 +96,14 @@
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModels\AddJobViewModel.cs" />
     <Compile Include="ViewModels\EditDebtorViewModel.cs" />
-    <Compile Include="ViewModels\AddModelViewModel.cs" />
+    <Compile Include="ViewModels\AddLokationViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\AddJobWindow.xaml.cs">
       <DependentUpon>AddJobWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddModelWindow.xaml.cs">
-      <DependentUpon>AddModelWindow.xaml</DependentUpon>
+    <Compile Include="Views\AddLokationWindow.xaml.cs">
+      <DependentUpon>AddLokationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EditDebtorWindow.xaml.cs">
       <DependentUpon>EditDebtorWindow.xaml</DependentUpon>

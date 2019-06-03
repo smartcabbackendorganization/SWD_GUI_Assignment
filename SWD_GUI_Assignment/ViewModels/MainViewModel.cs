@@ -23,21 +23,21 @@ namespace SWD_GUI_Assignment.ViewModels
             WindowTitle = "Lokation SW";
 
 
-            usersCollection = new CollectionViewSource();
-            usersCollection.Source = _models;
-            //usersCollection.Filter += usersCollection_Filter;
+            _lokationCollection = new CollectionViewSource();
+            _lokationCollection.Source = _lokations;
+            //_lokationCollection.Filter += usersCollection_Filter;
             FilterText = "";
 
         }
 
         #region Properties
 
-        private ObservableCollection<Lokation> _models = new ObservableCollection<Lokation>();
+        private ObservableCollection<Lokation> _lokations = new ObservableCollection<Lokation>();
 
-        public ObservableCollection<Lokation> Models
+        public ObservableCollection<Lokation> Lokations
         {
-            get => _models;
-            set => SetProperty(ref _models, value);
+            get => _lokations;
+            set => SetProperty(ref _lokations, value);
         }
 
 
@@ -49,13 +49,13 @@ namespace SWD_GUI_Assignment.ViewModels
             set => SetProperty(ref _jobs, value);
         }
 
-        private CollectionViewSource usersCollection;
+        private CollectionViewSource _lokationCollection;
 
-        public ICollectionView SourceCollection
+        public ICollectionView LokationCollection
         {
             get
             {
-                return this.usersCollection.View;
+                return this._lokationCollection.View;
             }
         }
 
@@ -68,7 +68,7 @@ namespace SWD_GUI_Assignment.ViewModels
             set
             {
                 filterText = value;
-                this.usersCollection.View.Refresh();
+                this._lokationCollection.View.Refresh();
                 RaisePropertyChanged("FilterText");
             }
         }
@@ -99,15 +99,15 @@ namespace SWD_GUI_Assignment.ViewModels
         #region Commands
 
         private DelegateCommand _addDebtorCommand;
-        private AddModelViewModel vm;
+        private AddLokationViewModel vm;
         public DelegateCommand AddDebtorCommand => _addDebtorCommand ?? (_addDebtorCommand = new DelegateCommand(() =>
         {
-             vm = new AddModelViewModel(_navigationService);
+             vm = new AddLokationViewModel(_navigationService);
             //Modeless way of doing it
             vm.Save += (arg1, arg2) =>
             {
-                _models.Add(vm.Lokation);
-                RaisePropertyChanged(nameof(Models));
+                _lokations.Add(vm.Lokation);
+                RaisePropertyChanged(nameof(Lokations));
                 vm = null;
             };
             vm.Close += (arg1, arg2) =>
@@ -166,7 +166,7 @@ namespace SWD_GUI_Assignment.ViewModels
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<Lokation>));
             StringWriter textWriter = new StringWriter();
-            serializer.Serialize(textWriter,_models);
+            serializer.Serialize(textWriter,_lokations);
 
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
