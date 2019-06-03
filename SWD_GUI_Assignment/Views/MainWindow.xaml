@@ -19,8 +19,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="27*"></ColumnDefinition>
-            <ColumnDefinition Width="181*"/>
-            <ColumnDefinition Width="88*"></ColumnDefinition>
+            <ColumnDefinition Width="198*"/>
+            <ColumnDefinition Width="71*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -33,22 +33,22 @@
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Navn}">
-                            <GridViewColumnHeader Content="Navn" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
+                            <GridViewColumnHeader Content="Navn" HorizontalContentAlignment="Left" MinWidth="100"></GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Vej}">
-                            <GridViewColumnHeader Content="Vej" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
+                            <GridViewColumnHeader Content="Vej" HorizontalContentAlignment="Left" MinWidth="100"></GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Vejnummer}">
                             <GridViewColumnHeader Content="Vejnummer" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=By}">
-                            <GridViewColumnHeader Content="By" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
+                            <GridViewColumnHeader Content="By" HorizontalContentAlignment="Left" MinWidth="100"></GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Postnummer}">
-                            <GridViewColumnHeader Content="Postnummer" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
+                            <GridViewColumnHeader Content="Postnummer" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=SamletAntal}">
-                            <GridViewColumnHeader Content="Samlet Antal" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
+                            <GridViewColumnHeader Content="Samlet Antal" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
                     </GridView.Columns>
 
@@ -73,7 +73,7 @@
             <Button Name="SelectedLokation" Content="Delete Selected" Command="{Binding Path=DeleteSelectedCommand}" CommandParameter="{Binding ElementName=ListViewLokations, Path=SelectedItem}" Margin="5 0 0 5" Padding="5 3"></Button>
 
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2" Margin="0,5,5,5" HorizontalAlignment="Right" Width="150">
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="0,5,5,5" HorizontalAlignment="Right" Width="150" Grid.ColumnSpan="2">
             <TextBlock Text="FilterBy: " Margin="0 3 0 0"></TextBlock>
             <TextBox Text="{Binding Path=FilterText, UpdateSourceTrigger=PropertyChanged}" MinWidth="100" Margin="0 3 5 0"></TextBox>
         </StackPanel>

@@ -149,9 +149,10 @@ namespace SWD_GUI_Assignment.ViewModels
                vm.Save += (arg1, arg2) =>
                {
                    //Remove the old
+                   var indexOf = Lokations.IndexOf(lokation);
                    Lokations.Remove(lokation);
                    //Insert the new element
-                   Lokations.Add(vm.Lokation);
+                   Lokations.Insert(indexOf, vm.Lokation);
                    //Update view
                    RaisePropertyChanged(nameof(Lokations));
                };
