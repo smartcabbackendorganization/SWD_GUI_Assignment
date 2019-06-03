@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:SWD_GUI_Assignment"
         xmlns:vm="clr-namespace:SWD_GUI_Assignment.ViewModels"
         mc:Ignorable="d"
-        Title="{Binding Path=WindowTitle}" Icon="/Images/Capture.PNG"  Height="290" Width="600" WindowStartupLocation="CenterScreen">
+        Title="{Binding Path=WindowTitle}" Icon="/Images/Tree.png"  Height="290" Width="600" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:MainViewModel></vm:MainViewModel>
     </Window.DataContext>
