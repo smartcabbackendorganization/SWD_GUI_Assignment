@@ -28,7 +28,6 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -43,56 +42,17 @@
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Adresse}">
                             <GridViewColumnHeader Content="Adresse" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Højde}">
-                            <GridViewColumnHeader Content="Højde" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Vejnummer}">
+                            <GridViewColumnHeader Content="Vejnummer" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Hårfarve}">
-                            <GridViewColumnHeader Content="Hårfarve" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=By}">
+                            <GridViewColumnHeader Content="By" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Vægt}">
-                            <GridViewColumnHeader Content="Vægt" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Postnummer}">
+                            <GridViewColumnHeader Content="Postnummer" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=TelefonNr}">
-                            <GridViewColumnHeader Content="TelefonNr" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
-                        </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Kommentarer}">
-                            <GridViewColumnHeader Content="Kommentarer" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
-                        </GridViewColumn>
-                    </GridView.Columns>
-
-                </GridView>
-            </ListView.View>
-
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding EditDebtorCommand}" CommandParameter="{Binding ElementName=ListViewDebtors, Path=SelectedItem}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-
-        </ListView>
-
-        <ListView IsSynchronizedWithCurrentItem="True" MinHeight="200" x:Name="ListViewJobs" ItemsSource="{Binding Path=Jobs}"
-                  SelectedItem="{Binding Path=Jobs}" Margin="5" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
-            <ListView.View>
-                <GridView>
-                    <GridView.Columns>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Kunde}">
-                            <GridViewColumnHeader Content="Kunde" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
-                        </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Adresse}">
-                            <GridViewColumnHeader Content="Adresse" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
-                        </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=StartDato}">
-                            <GridViewColumnHeader Content="StartDato" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
-                        </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=AntalDage}">
-                            <GridViewColumnHeader Content="AntalDage" HorizontalContentAlignment="Left" MinWidth="50"></GridViewColumnHeader>
-                        </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=AntalModeller}">
-                            <GridViewColumnHeader Content="AntalModeller" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
-                        </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Kommentarer}">
-                            <GridViewColumnHeader Content="Kommentarer" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Vej}">
+                            <GridViewColumnHeader Content="Vej" HorizontalContentAlignment="Right" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
                     </GridView.Columns>
 
@@ -109,7 +69,7 @@
 
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="5" Grid.ColumnSpan="2">
-            <Button Name="btnAddDebtor" Content="Add Model" Command="{Binding Path=AddDebtorCommand}" Margin="0 0 0 5" Padding="5 3"></Button>
+            <Button Name="btnAddDebtor" Content="Add Lokation" Command="{Binding Path=AddDebtorCommand}" Margin="0 0 0 5" Padding="5 3"></Button>
             <Button Name="btnAddJob" Content="Add Job" Command="{Binding Path=AddJobCommand}" Margin="0 0 0 5" Padding="5 3"></Button>
             <Button Name="SaveButton" Content="Save to file" Command="{Binding Path=SaveFile}" Margin="5 0 0 5" Padding="5 3"></Button>
         </StackPanel>

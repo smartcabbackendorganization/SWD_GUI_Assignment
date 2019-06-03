@@ -20,7 +20,7 @@ namespace SWD_GUI_Assignment.ViewModels
         {
             _navigationService = new NavigationService();
 
-            WindowTitle = "Model SW";
+            WindowTitle = "Lokation SW";
 
 
             usersCollection = new CollectionViewSource();
@@ -32,9 +32,9 @@ namespace SWD_GUI_Assignment.ViewModels
 
         #region Properties
 
-        private ObservableCollection<Model> _models = new ObservableCollection<Model>();
+        private ObservableCollection<Lokation> _models = new ObservableCollection<Lokation>();
 
-        public ObservableCollection<Model> Models
+        public ObservableCollection<Lokation> Models
         {
             get => _models;
             set => SetProperty(ref _models, value);
@@ -106,7 +106,7 @@ namespace SWD_GUI_Assignment.ViewModels
             //Modeless way of doing it
             vm.Save += (arg1, arg2) =>
             {
-                _models.Add(vm.Model);
+                _models.Add(vm.Lokation);
                 RaisePropertyChanged(nameof(Models));
                 vm = null;
             };
@@ -164,7 +164,7 @@ namespace SWD_GUI_Assignment.ViewModels
 
         private void SaveFile_Execute()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Model>));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Lokation>));
             StringWriter textWriter = new StringWriter();
             serializer.Serialize(textWriter,_models);
 

@@ -13,27 +13,26 @@ namespace SWD_GUI_Assignment.ViewModels
 {
     public class AddModelViewModel : BaseViewModel
     {
-        private Model _model;
-        public Model Model
+        private Lokation _lokation;
+        public Lokation Lokation
         {
-            get => _model; 
-            set  => SetProperty(ref _model, value); 
+            get => _lokation; 
+            set  => SetProperty(ref _lokation, value); 
         }
 
         public AddModelViewModel(NavigationService navigationService)
         {
-            Model = new Model();
+            Lokation = new Lokation();
 
-            Model.Hårfarve = "Brunt";
-            Model.Navn = "";
-            Model.Kommentarer = "Ingen kommentar";
-            Model.Vægt = "50 kg";
-            Model.Højde = 170;
+            Lokation.By = "Brunt";
+            Lokation.Navn = "";
+            Lokation.Postnummer = "50 kg";
+            Lokation.Vejnummer = 170;
 
 
             _navigationService = navigationService;
 
-            WindowTitle = "Add Model";
+            WindowTitle = "Add Lokation";
         }
 
         public event EventHandler Save;

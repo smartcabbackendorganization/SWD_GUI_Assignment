@@ -90,7 +90,8 @@
     </Compile>
     <Compile Include="Interfaces\IShowViewOfViewModel.cs" />
     <Compile Include="Models\Job.cs" />
-    <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\Lokation.cs" />
+    <Compile Include="Models\MeasurementTree.cs" />
     <Compile Include="Services\DialogCloser.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModels\AddJobViewModel.cs" />

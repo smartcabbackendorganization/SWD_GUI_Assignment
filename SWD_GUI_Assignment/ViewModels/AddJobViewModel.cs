@@ -25,7 +25,7 @@ namespace SWD_GUI_Assignment.ViewModels
             Job = new Job();
             _navigationService = navigationService;
 
-            WindowTitle = "Add Model";
+            WindowTitle = "Add Lokation";
         }
 
         public event EventHandler Save;
