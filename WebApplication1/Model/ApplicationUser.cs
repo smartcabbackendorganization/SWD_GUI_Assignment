@@ -7,19 +7,7 @@ namespace WebApplication1.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public string Fornavn { get; set; }
-
-        public string Efternavn { get; set; }
-
-        public int DBF { get; set; }
-
-        public string Adresse1 { get; set; }
-
-        public string Adresse2 { get; set; }
-
-        public int Postnummer { get; set; }
-
-        public string By { get; set; }
+        public string Navn { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

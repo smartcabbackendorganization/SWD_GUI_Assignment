@@ -4,7 +4,7 @@ namespace WebApplication1.Models
 {
     public class VaroViewModels
     {
-        public List<Varomides> mides = new List<Varomides>();
+        public List<Sensor> mides = new List<Sensor>();
         public string Navn = "Mit Navn";
     }
 }

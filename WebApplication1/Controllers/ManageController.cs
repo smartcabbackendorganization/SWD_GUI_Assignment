@@ -97,7 +97,7 @@ namespace WebApplication1.Controllers
         [AllowAnonymous]
         public async Task<String> GetAllVarroemides()
         {
-            return JsonConvert.SerializeObject(Context.Varroemides.ToList()); ;
+            return JsonConvert.SerializeObject(Context.Sensors.ToList()); ;
         }
 
 

@@ -21,31 +21,31 @@
         @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             @Html.AntiForgeryToken()
-            <h4>Make a new Entry.</h4>
+            <h4>Create a new sensor.</h4>
             <hr />
             @Html.ValidationSummary("", new { @class = "text-danger" })
             <div class="form-group">
-                @Html.LabelFor(m => m.Navn, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.LokationsId, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Navn, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.LokationsId, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(m => m.Count, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.Træart, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Count, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Træart, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(m => m.DaysObserved, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.Lat, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.DaysObserved, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Lat, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(m => m.Comments, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.Lon, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Comments, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Lon, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">

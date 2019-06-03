@@ -11,7 +11,7 @@ namespace WebApplication1.Models
             //Database.Delete();
         }
 
-        public DbSet<Varomides> Varroemides { get; set; }
+        public DbSet<Sensor> Sensors { get; set; }
 
         public static ApplicationDbContext Create()
         {

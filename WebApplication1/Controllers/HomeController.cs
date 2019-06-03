@@ -40,16 +40,16 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var varroe = new Varomides()
+                var sensor = new Sensor()
                 {
-                    Comments = model.Comments,
-                    Count = model.Count,
-                    DaysObserved = model.DaysObserved,
-                    Navn = model.Navn,
-                    CreatedBy = User.Identity.Name
+                    CreatedBy = User.Identity.Name,
+                    Lat = model.Lat,
+                    Lon = model.Lon,
+                    LokationsId = model.LokationsId,
+                    Træart = model.Træart
                 };
 
-                Context.Varroemides.Add(varroe);
+                Context.Sensors.Add(sensor);
                 Context.SaveChanges();
                 //Return with blank form
                 return View(new RegistrerVarroeViewModel());
