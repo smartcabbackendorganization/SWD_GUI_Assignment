@@ -13,7 +13,7 @@ namespace WebApplication1.Models
         public string Træart { get; set; }
 
         [Required]
-        [RegularExpression("^[a-fA-F0-9]+$", ErrorMessage = "Please only write a hexidecimal number")]
+        [RegularExpression("^[a-fA-F0-9]+$", ErrorMessage = "SensorId must only contain hexidecimal numbers")]
         [StringLength(16, ErrorMessage = "SensorId should be 16 charactor long", MinimumLength = 16)]
         public string SensorId { get; set; }
 

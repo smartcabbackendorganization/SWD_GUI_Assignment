@@ -1,9 +1,10 @@
 ﻿using System.Windows.Navigation;
 using Prism.Mvvm;
 using NavigationService = SWD_GUI_Assignment.Services.NavigationService;
-
+// Based from SWD GUI assignment, in group work with Frank Andersen And Jesper Strøm.
 namespace SWD_GUI_Assignment.ViewModels
 {
+
     public abstract class BaseViewModel : BindableBase
     {
         protected NavigationService _navigationService;
