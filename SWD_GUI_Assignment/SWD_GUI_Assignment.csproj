@@ -76,10 +76,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditDebtorWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -95,7 +91,6 @@
     <Compile Include="Services\DialogCloser.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModels\AddTreeViewModel.cs" />
-    <Compile Include="ViewModels\EditDebtorViewModel.cs" />
     <Compile Include="ViewModels\AddLokationViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -104,9 +99,6 @@
     </Compile>
     <Compile Include="Views\AddLokationWindow.xaml.cs">
       <DependentUpon>AddLokationWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\EditDebtorWindow.xaml.cs">
-      <DependentUpon>EditDebtorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

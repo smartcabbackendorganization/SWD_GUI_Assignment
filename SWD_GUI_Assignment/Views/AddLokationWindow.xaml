@@ -49,9 +49,6 @@
         <TextBox Name="TextBoxName"  VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="0" Padding="3">
             <TextBox.Text>
                 <Binding Path="Lokation.Navn">
-                    <Binding.ValidationRules>
-                        <ExceptionValidationRule />
-                    </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>

@@ -4,7 +4,7 @@ using SWD_GUI_Assignment.Views;
 
 namespace SWD_GUI_Assignment.Services
 {
-    public class NavigationService : IShowViewOfViewModel<AddLokationViewModel>, IShowViewOfViewModel<EditDebtorViewModel>
+    public class NavigationService : IShowViewOfViewModel<AddLokationViewModel>
     {
         public bool? ShowModal(AddLokationViewModel vm)
         {
@@ -13,33 +13,31 @@ namespace SWD_GUI_Assignment.Services
             return window.ShowDialog();
         }
 
+
+        private AddLokationWindow windowLokation = null;
         public void ShowModeless(AddLokationViewModel vm)
         {
-            var window = new AddLokationWindow();
-            window.DataContext = vm;
-            window.Show();
-            vm.Close += (arg1,arg2) => {window.Close(); };
-            vm.Save += (arg1, arg2) => { window.Close(); };
+            windowLokation = new AddLokationWindow();
+            windowLokation.DataContext = vm;
+            windowLokation.Show();
+            vm.Close += (arg1,arg2) => { windowLokation.Close(); };
+            vm.Save += (arg1, arg2) => { windowLokation.Close(); };
+        }
+
+        public void FocusLokationWindow()
+        {
+            if (windowLokation != null)
+            {
+                windowLokation.Focus();
+            }
         }
 
         public bool? ShowModal(AddTreeViewModel vm)
         {
             var window = new AddTreeWindow();
             window.DataContext = vm;
-            return window.ShowDialog();
-        }
-
-        public bool? ShowModal(EditDebtorViewModel vm)
-        {
-            var window = new EditDebtorWindow();
-            window.DataContext = vm;
             
             return window.ShowDialog();
-        }
-
-        public void ShowModeless(EditDebtorViewModel vm)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

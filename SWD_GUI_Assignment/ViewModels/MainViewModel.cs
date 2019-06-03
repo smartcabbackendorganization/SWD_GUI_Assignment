@@ -98,22 +98,31 @@ namespace SWD_GUI_Assignment.ViewModels
         #region Commands
 
         private DelegateCommand _addDebtorCommand;
-        private AddLokationViewModel vm;
+        private AddLokationViewModel vm = null;
         public DelegateCommand AddDebtorCommand => _addDebtorCommand ?? (_addDebtorCommand = new DelegateCommand(() =>
         {
-             vm = new AddLokationViewModel(_navigationService);
-            //Modeless way of doing it
-            vm.Save += (arg1, arg2) =>
+            //If window is not opened
+            if (vm == null)
             {
-                _lokations.Add(vm.Lokation);
-                RaisePropertyChanged(nameof(Lokations));
-                vm = null;
-            };
-            vm.Close += (arg1, arg2) =>
+                vm = new AddLokationViewModel(_navigationService);
+                //Modeless way of doing it
+                vm.Save += (arg1, arg2) =>
+                {
+                    _lokations.Add(vm.Lokation);
+                    RaisePropertyChanged(nameof(Lokations));
+                    vm = null;
+                };
+                vm.Close += (arg1, arg2) =>
+                {
+                    vm = null;
+                };
+                _navigationService.ShowModeless(vm);
+            }
+            else //Focus the window
             {
-                vm = null;
-            };
-            _navigationService.ShowModeless(vm);
+                _navigationService.FocusLokationWindow();
+            }
+            
         }));
 
 
