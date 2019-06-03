@@ -10,8 +10,10 @@
         @if (Request.IsAuthenticated)
         {
             <div id="SensorApp">
+                <label>Filter by</label>
+                <input v-model="filter" type="text" id="FilterLokation" />
                 <div>
-                    <b-table striped hover :fields="['Sensorid','LokationsId','CreatedBy','Træart','Lat', 'Lon']" :items="sensors"></b-table>
+                    <b-table :filter="filter" striped hover :fields="['Sensorid','LokationsId','CreatedBy','Træart','Lat', 'Lon']" :items="sensors"></b-table>
                 </div>
             </div>
         }

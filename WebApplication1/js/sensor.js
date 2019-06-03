@@ -3,7 +3,8 @@ vm = new Vue({
     el: '#SensorApp',
     data: {
         sensors: ["hej", "hej"],
-        loading: false
+        loading: false,
+        filter: null
     },
     methods: {
     },

@@ -3,7 +3,8 @@ vm = new Vue({
     el: '#vueApp',
     data: {
         lokations: ["hej", "hej"],
-        loading: false
+        loading: false,
+        filter:null
     },
     methods: {
     },
@@ -14,6 +15,8 @@ vm = new Vue({
                 console.log('Looks like there was a problem. Status Code: ' + response.status);
                 return;
             }
+
+            
 
             response.json().then(function (lokations) {
 
