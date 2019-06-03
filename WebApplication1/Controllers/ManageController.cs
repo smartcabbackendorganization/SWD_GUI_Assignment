@@ -11,10 +11,12 @@ using System.Xml.Serialization;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Owin.Security;
 using Newtonsoft.Json;
 using SWD_GUI_Assignment.Models;
 using WebApplication1.Models;
+using ActionResult = System.Web.Mvc.ActionResult;
 
 namespace WebApplication1.Controllers
 {
@@ -111,10 +113,6 @@ namespace WebApplication1.Controllers
         {
             return JsonConvert.SerializeObject(Context.Lokations.ToList()); ;
         }
-
-
-
-
 
         protected override void Dispose(bool disposing)
         {

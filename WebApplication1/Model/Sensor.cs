@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 
 namespace WebApplication1.Models
 {
@@ -14,6 +15,7 @@ namespace WebApplication1.Models
         public string CreatedBy { get; set; }
 
         public string Træart { get; set; }
+
         public string Sensorid { get; set; }
         public double Lat { get; set; }
         public double Lon { get; set; }
