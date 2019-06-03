@@ -62,8 +62,8 @@ namespace WebApplication1.Controllers
             //Save changes
             Context.SaveChanges();
             return RedirectToAction("Index", "Home");
-            //return JsonConvert.SerializeObject(Context.Sensors.ToList()); ;
         }
+
 
         //
         // POST: /Account/Register
@@ -74,25 +74,52 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Find the given user to attach his name to the sensor. 
                 var userId = User.Identity.GetUserId();
                 var user = Context.Users.Where(x => x.Id == userId).FirstOrDefault();
 
+                var randomSensorId = GetRandomHexNumber(16);
+                //Ensure that this random ID does not already exists. 
+                while (Context.Sensors.Any(x => x.Sensorid == randomSensorId))
+                {
+                    randomSensorId = GetRandomHexNumber(16);
+                }
+
+                //Create sensor
                 var sensor = new Sensor()
                 {
                     CreatedBy = user.Navn,
                     Lat = model.Lat,
                     Lon = model.Lon,
                     LokationsId = model.LokationsId,
-                    Træart = model.Træart
+                    Træart = model.Træart,
+                    Sensorid = randomSensorId
                 };
+
+                //Add to database
                 Context.Sensors.Add(sensor);
                 Context.SaveChanges();
                 //Return with blank form
                 return RedirectToAction("Index", "Home");
             }
 
-            // If we got this far, something failed, redisplay form
+            // Something failed - Return with model. 
             return View(model);
+        }
+
+
+        /// <summary>
+        /// Taken from: https://stackoverflow.com/questions/1054076/randomly-generated-hexadecimal-number-in-c-sharp
+        /// </summary>
+        static Random random = new Random();
+        public static string GetRandomHexNumber(int digits)
+        {
+            byte[] buffer = new byte[digits / 2];
+            random.NextBytes(buffer);
+            string result = String.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
+            if (digits % 2 == 0)
+                return result;
+            return result + random.Next(16).ToString("X");
         }
 
     }

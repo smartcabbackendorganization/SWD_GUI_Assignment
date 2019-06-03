@@ -13,8 +13,9 @@
              {
                  @Html.AntiForgeryToken()
                  <form method="post" enctype="multipart/form-data">
-                     <input type="file" name="file" id="file" />
-                     <input type="submit" value="Upload File" name="submit" />
+                     <label>Tilføj lokationer</label>
+                     <input type="file" name="file" id="file"/>
+                     <input type="submit" value="Upload File" name="submit"/>
                  </form>
              }
         }

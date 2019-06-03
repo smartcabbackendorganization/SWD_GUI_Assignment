@@ -98,9 +98,9 @@ namespace WebApplication1.Controllers
         }
 
 
-        // GET: /Manage/Index
+        // GET: /Manage/Sensors
         [AllowAnonymous]
-        public async Task<String> GetAllVarroemides()
+        public async Task<String> Sensors()
         {
             return JsonConvert.SerializeObject(Context.Sensors.ToList()); ;
         }

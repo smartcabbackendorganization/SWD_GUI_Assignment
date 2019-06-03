@@ -9,59 +9,14 @@
 
         @if (Request.IsAuthenticated)
         {
-            using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
-             {
-                 @Html.AntiForgeryToken()
-                 <form method="post" enctype="multipart/form-data">
-                     <input type="file" name="file" id="file" />
-                     <input type="submit" value="Upload File" name="submit" />
-                 </form>
-             }
-            <div id="vueApp">
+            <div id="SensorApp">
                 <div>
-                    <b-table striped hover :fields="['LokationsId','CreatedBy','Træart','Sensorid','Lat', 'Lon']" :items="varroes"></b-table>
-                </div>
-            </div>
-        }
-
-        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-        {
-            @Html.AntiForgeryToken()
-            <h4>Create a new sensor.</h4>
-            <hr />
-            @Html.ValidationSummary("", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(m => m.LokationsId, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.LokationsId, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Træart, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Træart, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Lat, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Lat, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Lon, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Lon, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-default" value="Register" />
+                    <b-table striped hover :fields="['Sensorid','LokationsId','CreatedBy','Træart','Lat', 'Lon']" :items="sensors"></b-table>
                 </div>
             </div>
         }
     </div>
 </div>
 @section Scripts {
-    <script src="~/js/index2.js"></script>
+    <script src="~/js/sensor.js"></script>
 }
