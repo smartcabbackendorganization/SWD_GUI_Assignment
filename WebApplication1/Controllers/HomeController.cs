@@ -70,7 +70,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Index(RegistrerVarroeViewModel model)
+        public async Task<ActionResult> Index(RegistrerSensorViewModel model)
         {
             if (ModelState.IsValid)
             {

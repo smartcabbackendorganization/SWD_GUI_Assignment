@@ -303,7 +303,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Model\Sensor.cs" />
-    <Compile Include="Models\RegistrerVarroeViewModel.cs" />
+    <Compile Include="Models\RegistrerSensorViewModel.cs" />
     <Compile Include="Models\VaroViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
