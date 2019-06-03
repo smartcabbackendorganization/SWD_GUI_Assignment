@@ -79,13 +79,6 @@ namespace WebApplication1.Controllers
                 var userId = User.Identity.GetUserId();
                 var user = Context.Users.Where(x => x.Id == userId).FirstOrDefault();
 
-                var randomSensorId = GetRandomHexNumber(16);
-                //Ensure that this random ID does not already exists. 
-                while (Context.Sensors.Any(x => x.Sensorid == randomSensorId))
-                {
-                    randomSensorId = GetRandomHexNumber(16);
-                }
-
                 //Create sensor
                 var sensor = new Sensor()
                 {
@@ -94,7 +87,7 @@ namespace WebApplication1.Controllers
                     Lon = model.Lon,
                     LokationsId = model.LokationsId,
                     Træart = model.Træart,
-                    Sensorid = model.SensorId
+                    Sensorid = model.SensorId.ToUpper()
                 };
 
                 //Add to database
@@ -106,21 +99,6 @@ namespace WebApplication1.Controllers
 
             // Something failed - Return with model. 
             return View(model);
-        }
-
-
-        /// <summary>
-        /// Taken from: https://stackoverflow.com/questions/1054076/randomly-generated-hexadecimal-number-in-c-sharp
-        /// </summary>
-        static Random random = new Random();
-        public static string GetRandomHexNumber(int digits)
-        {
-            byte[] buffer = new byte[digits / 2];
-            random.NextBytes(buffer);
-            string result = String.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
-            if (digits % 2 == 0)
-                return result;
-            return result + random.Next(16).ToString("X");
         }
 
     }
