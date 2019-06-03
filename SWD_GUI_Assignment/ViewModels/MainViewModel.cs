@@ -176,12 +176,18 @@ namespace SWD_GUI_Assignment.ViewModels
 
         private DelegateCommand _deleteAllCommand;
 
-
+        /// <summary>
+        /// Inspiration fra https://stackoverflow.com/questions/18315786/confirmation-box-in-c-sharp-wpf
+        /// </summary>
         public DelegateCommand DeleteAllCommand => _deleteAllCommand ??
                                                                   (_deleteAllCommand = new DelegateCommand(() =>
           {
-              Lokations.Clear();
-              RaisePropertyChanged(nameof(Lokations));
+              MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Slet alt bekræftigelse", "Slet Alt Bekræftigelse", System.Windows.MessageBoxButton.YesNo);
+              if (messageBoxResult == MessageBoxResult.Yes)
+              {
+                  Lokations.Clear();
+                  RaisePropertyChanged(nameof(Lokations));
+              }
           }));
 
 
