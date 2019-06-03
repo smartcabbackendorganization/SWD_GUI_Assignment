@@ -114,7 +114,7 @@ namespace WebApplication1.Controllers
                 Context.Sensors.Add(sensor);
                 Context.SaveChanges();
                 //Return with blank form
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Sensors", "Home");
             }
 
             // Something failed - Return with model. 
