@@ -24,6 +24,7 @@ namespace SWD_GUI_Assignment.Models
             {
                 if (value == "")
                 {
+                    _art = value;
                     throw new ApplicationException("Art is mandatory");
                 }
                 _art = value;
@@ -38,6 +39,7 @@ namespace SWD_GUI_Assignment.Models
             {
                 if (value == 0)
                 {
+                    _antal = value;
                     throw new ApplicationException("Count shuold be above zero");
                 }
                 _antal = value;

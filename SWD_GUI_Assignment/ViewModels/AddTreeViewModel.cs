@@ -28,13 +28,25 @@ namespace SWD_GUI_Assignment.ViewModels
             WindowTitle = "Tilføj Sort og antal";
         }
 
-        private ICommand _confirmCommand;
+        ICommand _confirmCommand;
 
-        public ICommand ConfirmCommand => _confirmCommand ?? (_confirmCommand = new DelegateCommand(Confirm_Execute));
+        public ICommand ConfirmCommand
+        {
+            get { return _confirmCommand ?? (_confirmCommand = new DelegateCommand(Confirm_Execute, CanConfirmCommandExecute)); }
+        }
+
+
+        private bool CanConfirmCommandExecute()
+        {
+            return MeasurementTree.Art != "" && MeasurementTree.Antal != 0;
+        }
 
         private void Confirm_Execute()
         {
+            
+
             DialogResult = true;
+
         }
     }
 }

@@ -92,6 +92,7 @@ namespace SWD_GUI_Assignment.ViewModels
             get { return _CloseCommand ?? (_SaveCommand = new DelegateCommand(CloseCommand_Execute)); }
         }
 
+
         private void CloseCommand_Execute()
         {
             Close?.Invoke(null, null);
