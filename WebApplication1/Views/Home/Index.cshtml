@@ -23,7 +23,7 @@
 
         <div id="vueApp">
             <div>
-                <b-table :filter="filter" striped hover :fields="['Id','Navn','Vej','Vejnummer','By', 'Postnummer']" :items="lokations"></b-table>
+                <b-table :filter="filter" striped hover :fields="['Id','Navn','Vej','Vejnummer','By', 'Postnummer','MeasurementTrees']" :items="lokations"></b-table>
             </div>
             <label>Filter by</label>
             <input v-model="filter" type="text" id="FilterLokation" />

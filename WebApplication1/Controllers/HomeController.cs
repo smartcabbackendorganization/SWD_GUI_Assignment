@@ -53,11 +53,31 @@ namespace WebApplication1.Controllers
 
             // Deserialize all the lokations.
             var temp = (List<Lokation>)serializer.Deserialize(file.InputStream);
-
             //Add each by their ID. 
             foreach (var newLokation in temp)
             {
-                Context.Lokations.AddOrUpdate(newLokation);
+                //Simplify the array structure to a readable string
+                var MeasurementTreeSimplified = "";
+                foreach (var newLokationMeasurementTree in newLokation.MeasurementTrees)
+                {
+                    MeasurementTreeSimplified +=
+                        newLokationMeasurementTree.Art + ": " + newLokationMeasurementTree.Antal + ", ";
+                }
+
+                //Make new entry for DB
+                LokationWithSimpleTree simpleLokation = new LokationWithSimpleTree()
+                {
+                    By = newLokation.By,
+                    Id = newLokation.Id,
+                    MeasurementTrees = MeasurementTreeSimplified,
+                    Navn = newLokation.Navn,
+                    Postnummer = newLokation.Postnummer,
+                    Vej = newLokation.Vej,
+                    Vejnummer = newLokation.Vejnummer
+                };
+
+                //Add it. 
+                Context.Lokations.AddOrUpdate(simpleLokation);
             }
 
             //Save changes

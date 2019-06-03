@@ -13,7 +13,7 @@ namespace WebApplication1.Models
         }
 
         public DbSet<Sensor> Sensors { get; set; }
-        public DbSet<Lokation> Lokations { get; set; }
+        public DbSet<LokationWithSimpleTree> Lokations { get; set; }
 
         public static ApplicationDbContext Create()
         {
