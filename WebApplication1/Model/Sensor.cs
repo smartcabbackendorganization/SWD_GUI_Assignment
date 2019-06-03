@@ -7,6 +7,8 @@ namespace WebApplication1.Models
         public Sensor()
         {
         }
+        public int Id { get; set; }
+
         public string LokationsId { get; set; }
 
         public string CreatedBy { get; set; }

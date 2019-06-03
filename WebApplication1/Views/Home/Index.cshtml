@@ -6,17 +6,27 @@
 }
 <div class="row">
     <div class="col-md-4">
-        
-    @if (Request.IsAuthenticated)
-    {
-        <div id="vueApp">
-            <div>
-                <b-table :filter="/@User.Identity.GetUserName()/" striped hover :fields="['Navn','CreatedAt','Count','DaysObserved','Comment']" :items="varroes"></b-table>
+
+        @if (Request.IsAuthenticated)
+        {
+            <div id="vueApp">
+                <div>
+                    <b-table striped hover :fields="['LokationsId','CreatedBy','Træart','Sensorid','Lat', 'Lon']" :items="varroes"></b-table>
+                </div>
+
+
             </div>
-            
-            
-        </div>
-    }
+        }
+
+        @using (Html.BeginForm("Upload", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+        {
+        @Html.AntiForgeryToken()
+            <form method="post" enctype="multipart/form-data">
+                <input type="file" name="file" id="file" />
+                <input type="submit" value="Upload File" name="submit" />
+            </form>
+        }
+
 
         @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {

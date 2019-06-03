@@ -101,6 +101,31 @@ namespace WebApplication1.Controllers
         }
 
 
+        // GET: /Manage/Index
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public String Upload(HttpPostedFileBase file)
+        {
+            var sensor = new Sensor()
+            {
+                CreatedBy = "NoFile",
+                Lat = 3,
+                Lon = 3,
+                LokationsId = "",
+                Træart = ""
+            };
+            if (file != null)
+            {
+                sensor.CreatedBy = file.FileName;
+            }
+
+            Context.Sensors.Add(sensor);
+            Context.SaveChanges();
+            return "";
+            //return JsonConvert.SerializeObject(Context.Sensors.ToList()); ;
+        }
+
 
         protected override void Dispose(bool disposing)
         {
