@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 using Microsoft.Win32;
 using Prism.Commands;
@@ -45,14 +47,14 @@ namespace SWD_GUI_Assignment.ViewModels
         }
 
 
-
         private DelegateCommand _addTreeCommand;
-        public DelegateCommand AddJobCommand => _addTreeCommand ?? (_addTreeCommand = new DelegateCommand(() =>
+        public DelegateCommand AddTreeCommand => _addTreeCommand ?? (_addTreeCommand = new DelegateCommand(() =>
         {
             var vm = new AddTreeViewModel(_navigationService);
             if (_navigationService.ShowModal(vm) == true)
             {
                 Lokation.MeasurementTrees.Add(vm.MeasurementTree);
+                RaisePropertyChanged(nameof(Lokation.MeasurementTrees));
             };
         }));
 

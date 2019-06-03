@@ -65,7 +65,7 @@
         <TextBox Name="TextBy" Text="{Binding Path=Lokation.By, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Grid.Row="9" Grid.Column="0" Padding="3"></TextBox>
         
         <Button Name="btnAddTree" Content="Add Tree" Command="{Binding Path=AddTreeCommand}" Margin="0 5 0 5" Padding="5 3" Grid.Row="10"></Button>
-        <ListView IsSynchronizedWithCurrentItem="True" MinHeight="200" x:Name="ListViewDebtors" ItemsSource="{Binding Path=Lokation.MeasurementTrees}"
+        <ListView IsSynchronizedWithCurrentItem="True" MinHeight="200" x:Name="ListViewTrees" ItemsSource="{Binding Path=Lokation.MeasurementTrees}"
                   SelectedItem="{Binding Path=MeasurementTree}" Margin="5" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3">
             <ListView.View>
                 <GridView>

@@ -22,37 +22,10 @@ namespace SWD_GUI_Assignment.ViewModels
 
         public AddTreeViewModel(NavigationService navigationService)
         {
-            MeasurementTree = new MeasurementTree();
+            _measurementTree = new MeasurementTree();
             _navigationService = navigationService;
 
-            WindowTitle = "Add Lokation";
-        }
-
-        public event EventHandler Save;
-        public event EventHandler Close;
-
-        ICommand _SaveCommand;
-        public ICommand SaveCommand
-        {
-            get { return _SaveCommand ?? (_SaveCommand = new DelegateCommand(SaveCommand_Execute)); }
-        }
-
-        private void SaveCommand_Execute()
-        {
-            Save?.Invoke(null,null);
-        }
-
-
-        ICommand _CloseCommand;
-        public ICommand CloseCommand
-        {
-            get { return _CloseCommand ?? (_SaveCommand = new DelegateCommand(CloseCommand_Execute)); }
-        }
-
-        private void CloseCommand_Execute()
-        {
-            Close?.Invoke(null, null);
-            
+            WindowTitle = "Tilføj Sort og antal";
         }
 
         private ICommand _confirmCommand;

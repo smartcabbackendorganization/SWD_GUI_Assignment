@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace SWD_GUI_Assignment.Models
     {
         public Lokation()
         {
-            MeasurementTrees = new List<MeasurementTree>();
+            MeasurementTrees = new ObservableCollection<MeasurementTree>();
         }
 
         public int Id { get; set; }
@@ -24,7 +25,7 @@ namespace SWD_GUI_Assignment.Models
 
         public string By { get; set; }
 
-        public List<MeasurementTree> MeasurementTrees { get; set; }
+        public ObservableCollection<MeasurementTree> MeasurementTrees { get; set; }
 
         public int SamletAntal
         {

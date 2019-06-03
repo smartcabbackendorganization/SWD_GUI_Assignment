@@ -29,15 +29,6 @@ namespace SWD_GUI_Assignment.Services
             return window.ShowDialog();
         }
 
-        public void ShowModeless(AddTreeViewModel vm)
-        {
-            var window = new AddTreeWindow();
-            window.DataContext = vm;
-            window.Show();
-            vm.Close += (arg1, arg2) => { window.Close(); };
-            vm.Save += (arg1, arg2) => { window.Close(); };
-        }
-
         public bool? ShowModal(EditDebtorViewModel vm)
         {
             var window = new EditDebtorWindow();
