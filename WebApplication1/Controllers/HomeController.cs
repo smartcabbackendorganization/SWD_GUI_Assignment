@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Serialization;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using SWD_GUI_Assignment.Models;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -28,10 +31,33 @@ namespace WebApplication1.Controllers
 
         public ActionResult Index()
         {
-           // Context.Database.Delete();
+            //Context.Database.Delete();
             return View();
         }
 
+        // GET: /Manage/Index
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            //Create a serializer
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Lokation>));
+
+            // Deserialize all the lokations.
+            var temp = (List<Lokation>)serializer.Deserialize(file.InputStream);
+
+            //Add each by their ID. 
+            foreach (var newLokation in temp)
+            {
+                Context.Lokations.AddOrUpdate(newLokation);
+            }
+
+            //Save changes
+            Context.SaveChanges();
+            return RedirectToAction("Index", "Home");
+            //return JsonConvert.SerializeObject(Context.Sensors.ToList()); ;
+        }
 
         //
         // POST: /Account/Register

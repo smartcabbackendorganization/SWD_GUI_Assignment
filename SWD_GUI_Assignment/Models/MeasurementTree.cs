@@ -20,6 +20,8 @@ namespace SWD_GUI_Assignment.Models
     private string _art;
     private int _antal;
 
+    public int Id { get; set; }
+
     public string Art
     {
         get => _art;

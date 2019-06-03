@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.Entity.Migrations;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Serialization;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Newtonsoft.Json;
+using SWD_GUI_Assignment.Models;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -100,31 +105,14 @@ namespace WebApplication1.Controllers
             return JsonConvert.SerializeObject(Context.Sensors.ToList()); ;
         }
 
-
-        // GET: /Manage/Index
-        [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public String Upload(HttpPostedFileBase file)
+        public async Task<String> Lokations()
         {
-            var sensor = new Sensor()
-            {
-                CreatedBy = "NoFile",
-                Lat = 3,
-                Lon = 3,
-                LokationsId = "",
-                Træart = ""
-            };
-            if (file != null)
-            {
-                sensor.CreatedBy = file.FileName;
-            }
-
-            Context.Sensors.Add(sensor);
-            Context.SaveChanges();
-            return "";
-            //return JsonConvert.SerializeObject(Context.Sensors.ToList()); ;
+            return JsonConvert.SerializeObject(Context.Lokations.ToList()); ;
         }
+
+
+
 
 
         protected override void Dispose(bool disposing)
