@@ -39,6 +39,12 @@
                 <hr />
                 @Html.ValidationSummary("", new { @class = "text-danger" })
                 <div class="form-group">
+                    @Html.LabelFor(m => m.SensorId, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.SensorId, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
                     @Html.LabelFor(m => m.LokationsId, new { @class = "col-md-3 control-label" })
                     <div class="col-md-9">
                         @Html.TextBoxFor(m => m.LokationsId, new { @class = "form-control" })

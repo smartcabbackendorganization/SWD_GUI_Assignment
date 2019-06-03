@@ -93,7 +93,7 @@ namespace WebApplication1.Controllers
                     Lon = model.Lon,
                     LokationsId = model.LokationsId,
                     Træart = model.Træart,
-                    Sensorid = randomSensorId
+                    Sensorid = model.SensorId
                 };
 
                 //Add to database
