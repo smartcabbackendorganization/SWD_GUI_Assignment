@@ -34,19 +34,19 @@ namespace SWD_GUI_Assignment.ViewModels
 
         #region Properties
 
+        private Lokation _lokation = null;
+        public Lokation Lokation
+        {
+            get => _lokation;
+            set => SetProperty(ref _lokation, value);
+        }
+
+
         private ObservableCollection<Lokation> _lokations = new ObservableCollection<Lokation>();
         public ObservableCollection<Lokation> Lokations
         {
             get => _lokations;
             set => SetProperty(ref _lokations, value);
-        }
-
-
-        private ObservableCollection<Job> _jobs = new ObservableCollection<Job>();
-        public ObservableCollection<Job> Jobs
-        {
-            get => _jobs;
-            set => SetProperty(ref _jobs, value);
         }
 
         private CollectionViewSource _lokationCollection;
@@ -97,9 +97,9 @@ namespace SWD_GUI_Assignment.ViewModels
 
         #region Commands
 
-        private DelegateCommand _addDebtorCommand;
+        private DelegateCommand _addLokationCommand;
         private AddLokationViewModel vm = null;
-        public DelegateCommand AddDebtorCommand => _addDebtorCommand ?? (_addDebtorCommand = new DelegateCommand(() =>
+        public DelegateCommand AddLokationCommand => _addLokationCommand ?? (_addLokationCommand = new DelegateCommand(() =>
         {
             //If window is not opened
             if (vm == null)
@@ -130,30 +130,54 @@ namespace SWD_GUI_Assignment.ViewModels
 
 
 
-        private DelegateCommand<VarroeMide> _editDebtorCommand;
+        private DelegateCommand<Lokation> _editLokationCommand;
         
 
-        public DelegateCommand<VarroeMide> EditDebtorCommand => _editDebtorCommand ?? (_editDebtorCommand = new DelegateCommand<VarroeMide>((debtor) =>
+        public DelegateCommand<Lokation> EditLokationElement => _editLokationCommand ?? 
+                                                              (_editLokationCommand = new DelegateCommand<Lokation>((lokation) =>
         {
-            
-
-            if (debtor != null)
+            if (lokation != null)
             {
                 // Work on a copy so editing wont interfere with this vm's instance
-               // var vm = new EditDebtorViewModel(_navigationService, VarroeMide.Clone(debtor));
+               var vm = new AddLokationViewModel(_navigationService, lokation.Clone() as Lokation);
 
-                if (_navigationService.ShowModal(vm) == true)
-                {
-                    //var index = VarroeMides.IndexOf(VarroeMide);
-                   // if (index != -1)
-                    {
-                        //VarroeMides[index] = vm.ActiveVarroeMide;
-                        // Force update of VarroeMides property, so Window will update total balance
-                        RaisePropertyChanged(nameof(VarroeMides));
-                    }
-                }
+               vm.Save += (arg1, arg2) =>
+               {
+                   //Remove the old
+                   Lokations.Remove(lokation);
+                   //Insert the new element
+                   Lokations.Add(vm.Lokation);
+                   //Update view
+                   RaisePropertyChanged(nameof(Lokations));
+               };
+
+                _navigationService.ShowModeless(vm);
             }
         }));
+
+        private DelegateCommand<Lokation> _deleteSelectedCommand;
+
+
+        public DelegateCommand<Lokation> DeleteSelectedCommand => _deleteSelectedCommand ??
+                                                                (_deleteSelectedCommand = new DelegateCommand<Lokation>((lokation) =>
+            {
+                if (lokation != null)
+                {
+                     Lokations.Remove(lokation);
+                     RaisePropertyChanged(nameof(Lokations));
+                }
+            }));
+
+        private DelegateCommand _deleteAllCommand;
+
+
+        public DelegateCommand DeleteAllCommand => _deleteAllCommand ??
+                                                                  (_deleteAllCommand = new DelegateCommand(() =>
+          {
+              Lokations.Clear();
+              RaisePropertyChanged(nameof(Lokations));
+          }));
+
 
         ICommand _SaveFile;
         public ICommand SaveFile

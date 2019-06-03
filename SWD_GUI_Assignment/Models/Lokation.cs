@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 /// </summary>
 namespace SWD_GUI_Assignment.Models
 {
-   public class Lokation
+   public class Lokation  :ICloneable
     {
         static int nextId;
         public Lokation()
@@ -38,6 +38,8 @@ namespace SWD_GUI_Assignment.Models
         public int SamletAntal
         {
             get => MeasurementTrees.Sum(x => x.Antal);
-        } 
+        }
+
+        public object Clone() { return this.MemberwiseClone(); }
     }
 }

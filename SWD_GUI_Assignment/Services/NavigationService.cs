@@ -1,10 +1,10 @@
-﻿using SWD_GUI_Assignment.Interfaces;
+﻿
 using SWD_GUI_Assignment.ViewModels;
 using SWD_GUI_Assignment.Views;
 
 namespace SWD_GUI_Assignment.Services
 {
-    public class NavigationService : IShowViewOfViewModel<AddLokationViewModel>
+    public class NavigationService
     {
         public bool? ShowModal(AddLokationViewModel vm)
         {

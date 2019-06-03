@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using SWD_GUI_Assignment.Annotations;
-using SWD_GUI_Assignment.Interfaces;
 
 namespace SWD_GUI_Assignment.Models
 {

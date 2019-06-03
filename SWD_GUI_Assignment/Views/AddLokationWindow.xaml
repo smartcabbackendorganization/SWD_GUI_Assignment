@@ -74,16 +74,8 @@
                             <GridViewColumnHeader Content="Antal"  MinWidth="75"></GridViewColumnHeader>
                         </GridViewColumn>
                     </GridView.Columns>
-
                 </GridView>
             </ListView.View>
-
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding EditDebtorCommand}" CommandParameter="{Binding ElementName=ListViewDebtors, Path=SelectedItem}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-
         </ListView>
 
 

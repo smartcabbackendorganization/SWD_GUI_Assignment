@@ -15,16 +15,12 @@
         <Style TargetType="ListViewItem">
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         </Style>
-
-        <DataTemplate x:Key="BalanceCellTemplate">
-            <TextBlock HorizontalAlignment="Right" Text="{Binding Path=Balance, StringFormat=F2}"/>
-        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="27*"></ColumnDefinition>
-            <ColumnDefinition Width="121*"/>
-            <ColumnDefinition Width="148*"></ColumnDefinition>
+            <ColumnDefinition Width="181*"/>
+            <ColumnDefinition Width="88*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -32,7 +28,7 @@
         </Grid.RowDefinitions>
 
         <ListView IsSynchronizedWithCurrentItem="True" MinHeight="200" x:Name="ListViewLokations" ItemsSource="{Binding Path=LokationCollection}"
-                  SelectedItem="{Binding Path=Lokations}" Margin="5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+                  SelectedItem="{Binding Path=Lokation}" Margin="5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" RenderTransformOrigin="0.604,0.495">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -61,20 +57,23 @@
 
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding EditDebtorCommand}" CommandParameter="{Binding ElementName=ListViewDebtors, Path=SelectedItem}"/>
+                    <i:InvokeCommandAction Command="{Binding EditLokationElement}" CommandParameter="{Binding ElementName=ListViewLokations, Path=SelectedItem}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
 
         </ListView>
 
 
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="5" Grid.ColumnSpan="2">
-            <Button Name="btnAddDebtor" Content="Add Lokation" Command="{Binding Path=AddDebtorCommand}" Margin="0 0 0 5" Padding="5 3"></Button>
-            
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Margin="5" Grid.ColumnSpan="2">
+            <Button Name="btnAddLokation" Content="Add Lokation" Command="{Binding Path=AddLokationCommand}" Margin="0 0 0 5" Padding="5 3"></Button>
+
             <Button Name="SaveButton" Content="Save to file" Command="{Binding Path=SaveFile}" Margin="5 0 0 5" Padding="5 3"></Button>
             <Button Name="OpenButton" Content="Open file" Command="{Binding Path=OpenFile}" Margin="5 0 0 5" Padding="5 3"></Button>
+            <Button Name="AllLokation" Content="Delete All" Command="{Binding Path=DeleteAllCommand}" Margin="5 0 0 5" Padding="5 3"></Button>
+            <Button Name="SelectedLokation" Content="Delete Selected" Command="{Binding Path=DeleteSelectedCommand}" CommandParameter="{Binding ElementName=ListViewLokations, Path=SelectedItem}" Margin="5 0 0 5" Padding="5 3"></Button>
+
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" Margin="0,5,5,5" HorizontalAlignment="Right">
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2" Margin="0,5,5,5" HorizontalAlignment="Right" Width="150">
             <TextBlock Text="FilterBy: " Margin="0 3 0 0"></TextBlock>
             <TextBox Text="{Binding Path=FilterText, UpdateSourceTrigger=PropertyChanged}" MinWidth="100" Margin="0 3 5 0"></TextBox>
         </StackPanel>

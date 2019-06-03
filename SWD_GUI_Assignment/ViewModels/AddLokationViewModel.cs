@@ -46,6 +46,15 @@ namespace SWD_GUI_Assignment.ViewModels
             WindowTitle = "Add Lokation";
         }
 
+        public AddLokationViewModel(NavigationService navigationService, Lokation lokation)
+        {
+            Lokation = lokation;
+
+            _navigationService = navigationService;
+
+            WindowTitle = "Add Lokation";
+        }
+
 
         private DelegateCommand _addTreeCommand;
         public DelegateCommand AddTreeCommand => _addTreeCommand ?? (_addTreeCommand = new DelegateCommand(() =>
@@ -72,6 +81,7 @@ namespace SWD_GUI_Assignment.ViewModels
 
         private void SaveCommand_Execute()
         {
+            
             Save?.Invoke(null,null);
         }
 
