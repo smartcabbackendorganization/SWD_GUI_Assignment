@@ -34,13 +34,13 @@ namespace SWD_GUI_Assignment.ViewModels
         {
             get { return _confirmCommand ?? (_confirmCommand = new DelegateCommand(Confirm_Execute, CanConfirmCommandExecute)
                              .ObservesProperty(()=>MeasurementTree.Antal)
-                             .ObservesProperty(()=>MeasurementTree.Art)); }
+                             .ObservesProperty(()=>MeasurementTree.Sort)); }
         }
 
 
         private bool CanConfirmCommandExecute()
         {
-            return MeasurementTree.Art != "" && MeasurementTree.Antal != 0;
+            return MeasurementTree.Sort != "" && MeasurementTree.Antal != 0;
         }
 
         private void Confirm_Execute()

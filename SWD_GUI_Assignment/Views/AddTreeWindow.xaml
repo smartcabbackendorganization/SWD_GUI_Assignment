@@ -33,10 +33,10 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Label Name="LabelArt" Content="Art" Grid.Row="2" Grid.Column="0"></Label>
-        <TextBox Name="TextBoxArt"  VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="0" Padding="3">
+        <Label Name="LabelSort" Content="Sort" Grid.Row="2" Grid.Column="0"></Label>
+        <TextBox Name="TextBoxSort"  VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="0" Padding="3">
             <TextBox.Text>
-                <Binding Path="MeasurementTree.Art">
+                <Binding Path="MeasurementTree.Sort">
                     <Binding.ValidationRules>
                         <ExceptionValidationRule />
                     </Binding.ValidationRules>

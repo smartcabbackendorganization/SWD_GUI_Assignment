@@ -43,7 +43,7 @@ namespace SWD_GUI_Assignment.ViewModels
 
             _navigationService = navigationService;
 
-            WindowTitle = "Add Lokation";
+            WindowTitle = "Tilføj Lokation";
         }
 
         public AddLokationViewModel(NavigationService navigationService, Lokation lokation)
@@ -52,7 +52,7 @@ namespace SWD_GUI_Assignment.ViewModels
 
             _navigationService = navigationService;
 
-            WindowTitle = "Add Lokation";
+            WindowTitle = "Tilføj Lokation";
         }
 
 

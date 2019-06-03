@@ -68,15 +68,15 @@
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Margin="5" Grid.ColumnSpan="2">
             <Button Name="btnAddLokation" Content="Add Lokation" Command="{Binding Path=AddLokationCommand}" Margin="0 0 0 5" Padding="5 3"></Button>
 
-            <Button Name="SaveButton" Content="Save to file" Command="{Binding Path=SaveFile}" Margin="5 0 0 5" Padding="5 3"></Button>
-            <Button Name="OpenButton" Content="Open file" Command="{Binding Path=OpenFile}" Margin="5 0 0 5" Padding="5 3"></Button>
-            <Button Name="AllLokation" Content="Delete All" Command="{Binding Path=DeleteAllCommand}" Margin="5 0 0 5" Padding="5 3"></Button>
-            <Button Name="SelectedLokation" Content="Delete Selected" Command="{Binding Path=DeleteSelectedCommand}" CommandParameter="{Binding ElementName=ListViewLokations, Path=SelectedItem}" Margin="5 0 0 5" Padding="5 3"></Button>
+            <Button Name="SaveButton" Content="Gem til fil" Command="{Binding Path=SaveFile}" Margin="5 0 0 5" Padding="5 3"></Button>
+            <Button Name="OpenButton" Content="Åben fil" Command="{Binding Path=OpenFile}" Margin="5 0 0 5" Padding="5 3"></Button>
+            <Button Name="AllLokation" Content="Slet alt" Command="{Binding Path=DeleteAllCommand}" Margin="5 0 0 5" Padding="5 3"></Button>
+            <Button Name="SelectedLokation" Content="Slet valgte" Command="{Binding Path=DeleteSelectedCommand}" CommandParameter="{Binding ElementName=ListViewLokations, Path=SelectedItem}" Margin="5 0 0 5" Padding="5 3"></Button>
 
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="0,5,5,5" HorizontalAlignment="Right" Width="150" Grid.ColumnSpan="2">
-            <TextBlock Text="FilterBy: " Margin="0 3 0 0"></TextBlock>
-            <TextBox Text="{Binding Path=FilterText, UpdateSourceTrigger=PropertyChanged}" MinWidth="100" Margin="0 3 5 0"></TextBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="5,5,5,5" HorizontalAlignment="Right" Width="150" Grid.ColumnSpan="2">
+            <TextBlock Text="Filter med: " Margin="0 5 5 0"></TextBlock>
+            <TextBox Text="{Binding Path=FilterText, UpdateSourceTrigger=PropertyChanged}" MinWidth="80" Margin="0 3 5 0"></TextBox>
         </StackPanel>
     </Grid>
 </Window>

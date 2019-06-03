@@ -14,27 +14,27 @@ namespace SWD_GUI_Assignment.Models
     public MeasurementTree()
     {
         Antal = 1;
-        Art = "Art";
+        Sort = "Sort";
     }
 
-    private string _art;
+    private string _sort;
     private int _antal;
 
     public int Id { get; set; }
 
-    public string Art
+    public string Sort
     {
-        get => _art;
+        get => _sort;
         set
         {
             if (value == "")
             {
-                _art = value;
+                _sort = value;
                 OnPropertyChanged();
-                throw new ApplicationException("Art is mandatory");
+                throw new ApplicationException("Sort is mandatory");
             }
 
-            _art = value;
+            _sort = value;
             OnPropertyChanged();
         }
     }

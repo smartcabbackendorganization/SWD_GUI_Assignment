@@ -61,7 +61,7 @@ namespace WebApplication1.Controllers
                 foreach (var newLokationMeasurementTree in newLokation.MeasurementTrees)
                 {
                     MeasurementTreeSimplified +=
-                        newLokationMeasurementTree.Art + ": " + newLokationMeasurementTree.Antal + ", ";
+                        newLokationMeasurementTree.Sort + ": " + newLokationMeasurementTree.Antal + ", ";
                 }
 
                 //Make new entry for DB
