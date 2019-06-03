@@ -12,8 +12,9 @@
         <vm:MainViewModel></vm:MainViewModel>
     </Window.DataContext>
     <Window.Resources>
-        <Style TargetType="ListViewItem">
-            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="MinWidth" Value="100"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
     </Window.Resources>
     <Grid>
@@ -33,22 +34,22 @@
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Navn}">
-                            <GridViewColumnHeader Content="Navn" HorizontalContentAlignment="Center" MinWidth="100"></GridViewColumnHeader>
+                            <GridViewColumnHeader Content="Navn"></GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Vej}">
-                            <GridViewColumnHeader Content="Vej" HorizontalContentAlignment="Center" MinWidth="100"></GridViewColumnHeader>
+                            <GridViewColumnHeader Content="Vej"></GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Vejnummer}">
-                            <GridViewColumnHeader Content="Vejnummer" HorizontalContentAlignment="Center" MinWidth="50"></GridViewColumnHeader>
+                            <GridViewColumnHeader Content="Vejnummer" MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=By}">
-                            <GridViewColumnHeader Content="By" HorizontalContentAlignment="Center" MinWidth="100"></GridViewColumnHeader>
+                            <GridViewColumnHeader Content="By"></GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Postnummer}">
-                            <GridViewColumnHeader Content="Postnummer" HorizontalContentAlignment="Center" MinWidth="50"></GridViewColumnHeader>
+                            <GridViewColumnHeader Content="Postnummer"  MinWidth="50"></GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=SamletAntal}">
-                            <GridViewColumnHeader Content="Samlet Antal" MinWidth="50"></GridViewColumnHeader>
+                            <GridViewColumnHeader Content="Samlet Antal"></GridViewColumnHeader>
                         </GridViewColumn>
                     </GridView.Columns>
 
