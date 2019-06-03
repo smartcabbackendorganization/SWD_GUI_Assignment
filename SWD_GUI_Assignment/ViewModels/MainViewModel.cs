@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Xml;
 using System.Xml.Serialization;
 using Microsoft.Win32;
 using Prism.Commands;
@@ -22,10 +24,10 @@ namespace SWD_GUI_Assignment.ViewModels
 
             WindowTitle = "Lokation SW";
 
-
+            //To allow search by name
             _lokationCollection = new CollectionViewSource();
             _lokationCollection.Source = _lokations;
-            //_lokationCollection.Filter += usersCollection_Filter;
+            _lokationCollection.Filter += usersCollection_Filter;
             FilterText = "";
 
         }
@@ -33,7 +35,6 @@ namespace SWD_GUI_Assignment.ViewModels
         #region Properties
 
         private ObservableCollection<Lokation> _lokations = new ObservableCollection<Lokation>();
-
         public ObservableCollection<Lokation> Lokations
         {
             get => _lokations;
@@ -42,7 +43,6 @@ namespace SWD_GUI_Assignment.ViewModels
 
 
         private ObservableCollection<Job> _jobs = new ObservableCollection<Job>();
-
         public ObservableCollection<Job> Jobs
         {
             get => _jobs;
@@ -50,7 +50,6 @@ namespace SWD_GUI_Assignment.ViewModels
         }
 
         private CollectionViewSource _lokationCollection;
-
         public ICollectionView LokationCollection
         {
             get
@@ -59,6 +58,7 @@ namespace SWD_GUI_Assignment.ViewModels
             }
         }
 
+        private string filterText;
         public string FilterText
         {
             get
@@ -81,15 +81,14 @@ namespace SWD_GUI_Assignment.ViewModels
                 return;
             }
 
-            VarroeMide usr = e.Item as VarroeMide;
-            if (usr.Name.ToUpper().Contains(FilterText.ToUpper()))
+            Lokation item = e.Item as Lokation;
+            if (item.Navn.ToUpper().Contains(FilterText.ToUpper()))
             {
                 e.Accepted = true;
             }
             else
             {
                 e.Accepted = false;
-                e.Accepted = true;
             }
         }
 
@@ -123,7 +122,7 @@ namespace SWD_GUI_Assignment.ViewModels
 
 
         private DelegateCommand<VarroeMide> _editDebtorCommand;
-        private string filterText;
+        
 
         public DelegateCommand<VarroeMide> EditDebtorCommand => _editDebtorCommand ?? (_editDebtorCommand = new DelegateCommand<VarroeMide>((debtor) =>
         {
@@ -155,17 +154,48 @@ namespace SWD_GUI_Assignment.ViewModels
 
         private void SaveFile_Execute()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Lokation>));
-            StringWriter textWriter = new StringWriter();
-            serializer.Serialize(textWriter,_lokations);
+            if (_lokations.Count != 0)
+            {
+                //Serialiser
+                XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Lokation>));
+                
 
-
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            if (saveFileDialog.ShowDialog() == true)
-                File.WriteAllText(saveFileDialog.FileName, textWriter.ToString());
+                //Write to file
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    TextWriter textWriter = new StreamWriter(saveFileDialog.FileName);
+                    serializer.Serialize(textWriter, _lokations);
+                }     
+            }
         }
 
+        ICommand _openFile;
+        public ICommand OpenFile
+        {
+            get { return _openFile ?? (_openFile = new DelegateCommand(OpenFile_Execute)); }
+        }
 
+        private void OpenFile_Execute()
+        {   
+            //Serialiser
+            XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Lokation>));
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                TextReader reader = new StreamReader(openFileDialog.FileName);
+                // Deserialize all the lokations.
+                var temp = (ObservableCollection<Lokation>)serializer.Deserialize(reader);
+
+                //Add them to storage
+                Lokations.AddRange(temp);
+                RaisePropertyChanged(nameof(Lokations));
+
+                //Close reader
+                reader.Close();
+            }
+        }
 
         #endregion
     }
