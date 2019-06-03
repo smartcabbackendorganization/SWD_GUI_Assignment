@@ -35,6 +35,12 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult Sensors()
+        {
+            //Context.Database.Delete();
+            return View();
+        }
+
         // GET: /Manage/Index
         [HttpPost]
         [AllowAnonymous]
