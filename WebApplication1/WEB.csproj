@@ -368,9 +368,9 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SWD_GUI_Assignment\SWD_GUI_Assignment.csproj">
+    <ProjectReference Include="..\SWD_GUI_Assignment\WPF.csproj">
       <Project>{4c520637-e180-4245-b7bc-53c2b1cee872}</Project>
-      <Name>SWD_GUI_Assignment</Name>
+      <Name>WPF</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

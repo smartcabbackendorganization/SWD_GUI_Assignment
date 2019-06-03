@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWD_GUI_Assignment", "SWD_GUI_Assignment\SWD_GUI_Assignment.csproj", "{4C520637-E180-4245-B7BC-53C2B1CEE872}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF", "SWD_GUI_Assignment\WPF.csproj", "{4C520637-E180-4245-B7BC-53C2B1CEE872}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{2992E51B-A767-4715-A1E6-7ED4D6823292}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEB", "WebApplication1\WEB.csproj", "{2992E51B-A767-4715-A1E6-7ED4D6823292}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
