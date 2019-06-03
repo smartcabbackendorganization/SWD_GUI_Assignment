@@ -30,6 +30,10 @@ namespace SWD_GUI_Assignment.ViewModels
             _lokationCollection.Filter += usersCollection_Filter;
             FilterText = "";
 
+
+            //Setup backgground thread
+            bw.DoWork += new DoWorkEventHandler(BackgroundThreadOperation);
+
         }
 
         #region Properties
@@ -185,21 +189,30 @@ namespace SWD_GUI_Assignment.ViewModels
             get { return _SaveFile ?? (_SaveFile = new DelegateCommand(SaveFile_Execute)); }
         }
 
+        BackgroundWorker bw = new BackgroundWorker();
         private void SaveFile_Execute()
         {
             if (_lokations.Count != 0)
             {
-                //Serialiser
-                XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Lokation>));
-                
+                //Do in a background thread
+                //As saving can take a LONG time if file is blocked etc. 
+                bw.RunWorkerAsync();
+            }
+        }
 
-                //Write to file
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                if (saveFileDialog.ShowDialog() == true)
-                {
-                    TextWriter textWriter = new StreamWriter(saveFileDialog.FileName);
-                    serializer.Serialize(textWriter, _lokations);
-                }     
+        private void BackgroundThreadOperation(object sender, DoWorkEventArgs e)
+        {
+            //Serialiser
+            XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Lokation>));
+
+
+            //Write to file
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                TextWriter textWriter = new StreamWriter(saveFileDialog.FileName);
+                serializer.Serialize(textWriter, _lokations);
+                textWriter.Close();
             }
         }
 
