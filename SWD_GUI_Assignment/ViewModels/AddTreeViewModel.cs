@@ -32,7 +32,8 @@ namespace SWD_GUI_Assignment.ViewModels
 
         public ICommand ConfirmCommand
         {
-            get { return _confirmCommand ?? (_confirmCommand = new DelegateCommand(Confirm_Execute, CanConfirmCommandExecute)); }
+            get { return _confirmCommand ?? (_confirmCommand = new DelegateCommand(Confirm_Execute, CanConfirmCommandExecute)
+                             .ObservesProperty(()=>MeasurementTree.Antal)); }
         }
 
 
@@ -43,10 +44,7 @@ namespace SWD_GUI_Assignment.ViewModels
 
         private void Confirm_Execute()
         {
-            
-
             DialogResult = true;
-
         }
     }
 }

@@ -28,7 +28,7 @@ namespace SWD_GUI_Assignment.Models
                     throw new ApplicationException("Art is mandatory");
                 }
                 _art = value;
-
+                SetProperty(ref _art, value);
             }
         }
 
