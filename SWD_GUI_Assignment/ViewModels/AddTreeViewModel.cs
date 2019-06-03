@@ -11,18 +11,18 @@ using SWD_GUI_Assignment.Services;
 
 namespace SWD_GUI_Assignment.ViewModels
 {
-    public class AddJobViewModel : BaseViewModel
+    public class AddTreeViewModel : BaseViewModel
     {
-        private Job _job;
-        public Job Job
+        private MeasurementTree _measurementTree;
+        public MeasurementTree MeasurementTree
         {
-            get => _job; 
-            set  => SetProperty(ref _job, value); 
+            get => _measurementTree; 
+            set  => SetProperty(ref _measurementTree, value); 
         }
 
-        public AddJobViewModel(NavigationService navigationService)
+        public AddTreeViewModel(NavigationService navigationService)
         {
-            Job = new Job();
+            MeasurementTree = new MeasurementTree();
             _navigationService = navigationService;
 
             WindowTitle = "Add Lokation";

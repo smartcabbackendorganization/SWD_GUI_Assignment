@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
@@ -20,20 +21,43 @@ namespace SWD_GUI_Assignment.ViewModels
             set  => SetProperty(ref _lokation, value); 
         }
 
+        private MeasurementTree _measurementTree = null;
+        public MeasurementTree MeasurementTree
+        {
+            get => _measurementTree;
+            set => SetProperty(ref _measurementTree, value);
+        }
+
+
         public AddLokationViewModel(NavigationService navigationService)
         {
             Lokation = new Lokation();
 
-            Lokation.By = "Brunt";
-            Lokation.Navn = "";
-            Lokation.Postnummer = "50 kg";
-            Lokation.Vejnummer = 170;
-
+            Lokation.By = "Aarhus V";
+            Lokation.Navn = "Min Park";
+            Lokation.Postnummer = "8210";
+            Lokation.Vejnummer = 22;
+            Lokation.Vej = "Snogebæksvej";
 
             _navigationService = navigationService;
 
             WindowTitle = "Add Lokation";
         }
+
+
+
+        private DelegateCommand _addTreeCommand;
+        public DelegateCommand AddJobCommand => _addTreeCommand ?? (_addTreeCommand = new DelegateCommand(() =>
+        {
+            var vm = new AddTreeViewModel(_navigationService);
+            if (_navigationService.ShowModal(vm) == true)
+            {
+                Lokation.MeasurementTrees.Add(vm.MeasurementTree);
+            };
+        }));
+
+
+        #region SaveAndClose
 
         public event EventHandler Save;
         public event EventHandler Close;
@@ -62,6 +86,6 @@ namespace SWD_GUI_Assignment.ViewModels
             
         }
 
-
+        #endregion
     }
 }

@@ -70,7 +70,7 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="5" Grid.ColumnSpan="2">
             <Button Name="btnAddDebtor" Content="Add Lokation" Command="{Binding Path=AddDebtorCommand}" Margin="0 0 0 5" Padding="5 3"></Button>
-            <Button Name="btnAddJob" Content="Add Job" Command="{Binding Path=AddJobCommand}" Margin="0 0 0 5" Padding="5 3"></Button>
+            
             <Button Name="SaveButton" Content="Save to file" Command="{Binding Path=SaveFile}" Margin="5 0 0 5" Padding="5 3"></Button>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" Margin="0,5,5,5" HorizontalAlignment="Right">

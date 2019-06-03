@@ -22,16 +22,16 @@ namespace SWD_GUI_Assignment.Services
             vm.Save += (arg1, arg2) => { window.Close(); };
         }
 
-        public bool? ShowModal(AddJobViewModel vm)
+        public bool? ShowModal(AddTreeViewModel vm)
         {
-            var window = new AddJobWindow();
+            var window = new AddTreeWindow();
             window.DataContext = vm;
             return window.ShowDialog();
         }
 
-        public void ShowModeless(AddJobViewModel vm)
+        public void ShowModeless(AddTreeViewModel vm)
         {
-            var window = new AddJobWindow();
+            var window = new AddTreeWindow();
             window.DataContext = vm;
             window.Show();
             vm.Close += (arg1, arg2) => { window.Close(); };

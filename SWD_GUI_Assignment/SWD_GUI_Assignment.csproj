@@ -68,7 +68,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\AddJobWindow.xaml">
+    <Page Include="Views\AddTreeWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -94,13 +94,13 @@
     <Compile Include="Models\MeasurementTree.cs" />
     <Compile Include="Services\DialogCloser.cs" />
     <Compile Include="Services\NavigationService.cs" />
-    <Compile Include="ViewModels\AddJobViewModel.cs" />
+    <Compile Include="ViewModels\AddTreeViewModel.cs" />
     <Compile Include="ViewModels\EditDebtorViewModel.cs" />
     <Compile Include="ViewModels\AddLokationViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="Views\AddJobWindow.xaml.cs">
-      <DependentUpon>AddJobWindow.xaml</DependentUpon>
+    <Compile Include="Views\AddTreeWindow.xaml.cs">
+      <DependentUpon>AddTreeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddLokationWindow.xaml.cs">
       <DependentUpon>AddLokationWindow.xaml</DependentUpon>

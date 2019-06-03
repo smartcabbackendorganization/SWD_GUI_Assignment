@@ -8,6 +8,11 @@ namespace SWD_GUI_Assignment.Models
 {
    public class Lokation
     {
+        public Lokation()
+        {
+            MeasurementTrees = new List<MeasurementTree>();
+        }
+
         public int Id { get; set; }
 
         public string Navn{ get; set; }
